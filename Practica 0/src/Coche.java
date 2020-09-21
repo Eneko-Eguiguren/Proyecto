@@ -1,5 +1,5 @@
 
-public class coche {
+public class Coche {
 	private double miVelocidad; // Velocidad en pixels/segundo
 	protected double miDireccionActual; // Dirección en la que estoy mirando en grados (de 0 a 360)
 	protected double posX; // Posición en X (horizontal)
@@ -13,8 +13,16 @@ public class coche {
 	public double getMiDireccionActual() {
 		return miDireccionActual;
 	}
-	public void setMiDireccionActual(double miDireccionActual) {
-		this.miDireccionActual = miDireccionActual;
+	public void setMiDireccionActual(double dir) {
+		if (dir < 0.0D) {
+	         dir += 360.0D;
+	      }
+
+	      if (dir > 360.0D) {
+	         dir -= 360.0D;
+	      }
+
+	      this.miDireccionActual = dir;
 	}
 	public double getPosX() {
 		return posX;
@@ -40,13 +48,6 @@ public class coche {
 		this.setPosY(posY);
 	}
 	private String piloto; // Nombre de piloto
-	public coche (double vel, double dir, double x, double y, String nom) {
-		this.setMiVelocidad(vel);
-		this.setMiDireccionActual(dir);
-		this.setPosX(x);
-		this.setPosY(y);
-		this.setPiloto(nom);
-	}
 	public String toString() {
 	      return this.piloto + " (" + this.posX + "," + this.posY + ") - " + "Velocidad: " + this.miVelocidad + " ## Dirección: " + this.miDireccionActual;
 	   }
@@ -66,7 +67,7 @@ public class coche {
 	 * @param tiempoMovimiento Tiempo transcurrido, en segundos
 	 */
 	public void mueve(double tiempoMovimiento) {
-		this.setPosX(this.posX + (this.miVelocidad * Math.cos(miDireccionActual) * tiempoMovimiento));
-		this.setPosY(this.posY + (this.miVelocidad * Math.sin(miDireccionActual) * tiempoMovimiento));
+		this.setPosX(this.posX + (this.miVelocidad * Math.cos(this.miDireccionActual / 180.0D * 3.141592653589793D) * tiempoMovimiento));
+		this.setPosY(this.posY + (this.miVelocidad * Math.sin(this.miDireccionActual / 180.0D * 3.141592653589793D) * tiempoMovimiento));
 	}
 }

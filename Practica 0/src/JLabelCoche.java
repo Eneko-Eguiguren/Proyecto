@@ -12,9 +12,20 @@ public class JLabelCoche extends JLabel{
 	private double miGiro = 1.5707963267948966D;
 	
 	public JLabelCoche() {
-		
+		try {
+			this.setIcon(new ImageIcon(JLabelCoche.class.getResource("coche.png").toURI().toURL()));
+		} catch(Exception e) {
+			System.err.println("coche.png no encontrado");
+			e.printStackTrace();
+		}
+		 this.setBounds(0, 0, 100, 100);
 	}
 	
+	public void setGiro(double gradosGiro) {
+	      this.miGiro = gradosGiro / 180.0D * 3.141592653589793D;
+	      this.miGiro = -this.miGiro;
+	      ++this.miGiro;
+	   }
 	
 	
 	
