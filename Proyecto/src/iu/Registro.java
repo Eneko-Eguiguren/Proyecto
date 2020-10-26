@@ -1,4 +1,4 @@
-package clases;
+package iu;
 
 public class Registro {
 

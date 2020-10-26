@@ -1,4 +1,4 @@
-package clases;
+package iu;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -22,7 +22,7 @@ public class Login  extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	Color colorAzul = new Color(100,110,255);
+	Color colorAzul = new Color(200,180,150);
 	CustomFont cf = new CustomFont();
 	public Login() {
 		//
@@ -31,9 +31,9 @@ public class Login  extends JFrame{
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		//
 		JPanel panel = new JPanel();
-		JLabel title1 = new JLabel("FOOTBALL");
-		JLabel title2 = new JLabel("RESULTS");
-		JLabel icon = new JLabel(new ImageIcon("src/images/icono5.png"));
+		JLabel title1 = new JLabel("HISTORY");
+		JLabel title2 = new JLabel("FOOTBALL");
+		JLabel icon = new JLabel(new ImageIcon("src/images/icono7.png"));
 		JLabel usr = new JLabel("USUARIO");
 		JLabel password = new JLabel("CONTRASEÑA");
 		JTextField usrTxt = new JTextField(20);
@@ -50,8 +50,8 @@ public class Login  extends JFrame{
 		passwordTxt.setBounds(200, 185, 160, 35);
 		accept.setBounds(115, 260, 100, 40);
 		delete.setBounds(240, 260, 100, 40);
-		title1.setBounds(80, 20, 130, 100);
-		title2.setBounds(248, 20, 100, 100);
+		title1.setBounds(90, 20, 130, 100);
+		title2.setBounds(246, 20, 130, 100);
 		icon.setBounds(190, 40, 54, 54);
 		register.setBounds(160, 330, 140, 40);
 		
@@ -62,6 +62,13 @@ public class Login  extends JFrame{
 		title2.setForeground(Color.BLACK);
 		register.setBorderPainted(false);
 		register.setBackground(colorAzul);
+		accept.setBackground(Color.BLACK);
+		accept.setForeground(Color.WHITE);
+		delete.setBackground(Color.BLACK);
+		delete.setForeground(Color.WHITE);
+		usr.setForeground(Color.BLACK);
+		password.setForeground(Color.BLACK);
+		register.setForeground(Color.BLACK);
 		//
 		this.add(panel);
 		panel.add(usr);
