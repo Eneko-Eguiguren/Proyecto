@@ -4,20 +4,21 @@ import java.util.ArrayList;
 
 public class Usuario {
 
-	public int nombre;
-	public String contraseña;
+	public String nombre;
+	public char[] contraseña;
 	public ArrayList<String> equiposFavoritos ; // Array de equipos, no de strings
 	public ArrayList<String> competicionesFavoritas ;
-	public int getNombre() {
+	
+	public String getNombre() {
 		return nombre;
 	}
-	public void setNombre(int nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getContraseña() {
+	public char[] getContraseña() {
 		return contraseña;
 	}
-	public void setContraseña(String contraseña) {
+	public void setContraseña(char[] contraseña) {
 		this.contraseña = contraseña;
 	}
 	public ArrayList<String> getEquiposFavoritos() {
@@ -32,4 +33,6 @@ public class Usuario {
 	public void setCompeticionesFavoritas(ArrayList<String> competicionesFavoritas) {
 		this.competicionesFavoritas = competicionesFavoritas;
 	} 
+	
+	
 }

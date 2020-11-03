@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 import CFont.CustomFont;
+import datos.Usuario;
 
 public class Login  extends JFrame{
 
@@ -22,8 +24,9 @@ public class Login  extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	Color colorAzul = new Color(200,180,150);
+	Color color = new Color(200,180,150);
 	CustomFont cf = new CustomFont();
+	public ArrayList<Usuario> usuarios;
 	public Login() {
 		//
 		this.setTitle("LogIn");
@@ -43,7 +46,7 @@ public class Login  extends JFrame{
 		JButton register = new JButton("¿Eres nuevo?");
 		//
 		panel.setLayout(null);
-		panel.setBackground(colorAzul);
+		panel.setBackground(color);
 		usr.setBounds(70, 130, 70, 25);
 		password.setBounds(70, 190, 100, 25);
 		usrTxt.setBounds(200, 125, 160, 35);
@@ -55,13 +58,13 @@ public class Login  extends JFrame{
 		icon.setBounds(190, 40, 54, 54);
 		register.setBounds(160, 330, 140, 40);
 		
-		icon.setBackground(colorAzul);
+		icon.setBackground(color);
 		title1.setFont(cf.MyFont(1, 24));
 		title1.setForeground(Color.BLACK);
 		title2.setFont(cf.MyFont(1, 24));
 		title2.setForeground(Color.BLACK);
 		register.setBorderPainted(false);
-		register.setBackground(colorAzul);
+		register.setBackground(color);
 		accept.setBackground(Color.BLACK);
 		accept.setForeground(Color.WHITE);
 		delete.setBackground(Color.BLACK);
@@ -96,8 +99,15 @@ public class Login  extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				// registro.setvisible(true);
+				new Registro();
 				dispose();
+			}
+		});
+		accept.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//if(usrTxt.getText()== usuarios)
 				
 			}
 		});
