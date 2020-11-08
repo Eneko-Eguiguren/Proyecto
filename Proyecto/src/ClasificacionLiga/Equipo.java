@@ -1,45 +1,48 @@
 package ClasificacionLiga;
 
+import ClasificacionLiga.Equipo;
+import ClasificacionLiga.Partido;
 
-public class Equipo {
+public abstract class Equipo {
+	protected String nombre;
+	protected double puntos;
 	
-	private String nombre;
-	private int puntos;
-
-	public Equipo(String nombre){
-		
-		this.setNombre(nombre);
-		this.setPuntos(0);
+	public Equipo( String nombre ) {
+		this.nombre = nombre;
+		init();
 	}
 
-	public void setNombre(String nombre){
-		this.nombre=nombre;
-	}
-
-	public void setPuntos(int puntos){
-		this.puntos=puntos;
+	public void init() {
+		puntos = 0;
 	}
 
 	public String getNombre() {
-		return this.nombre;
+		return nombre;
 	}
 
-	public int getPuntos() {
-		return this.puntos;
+	public double getPuntos() {
+		return puntos;
 	}
 
-	public void incPuntos(int incremento) {
-		this.puntos+=incremento;
+	public void setPuntos(double puntos) {
+		puntos += puntos;
 	}
 
+	public void incPuntos(double puntosMas) {
+		puntos += puntosMas;
+	}
+
+	public abstract void calculaPartido( Partido p );
+
+	public abstract boolean esMejorQue( Equipo e2 );
+
+	public abstract String[] getCabs();
+
+	public abstract int[] getCols();
+	
+	@Override
 	public String toString() {
-		return "Equipo: " + this.nombre + " Puntos: "+ this.puntos;
+		return nombre + " - " + puntos + " puntos.";
 	}
 	
-	public static void main(String[] args) {
-		Equipo barca = new Equipo("Athletic");
-		barca.incPuntos(3);
-		System.out.println(barca);;
-	}
-
 }

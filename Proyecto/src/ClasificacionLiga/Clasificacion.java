@@ -1,82 +1,91 @@
 package ClasificacionLiga;
 
-public class Clasificacion {
-	private Equipo equipos[] = new Equipo[20];
+import ClasificacionLiga.Equipo;
+import ClasificacionLiga.EquipoFutbol;
+import ClasificacionLiga.Liga;
+import ClasificacionLiga.Partido;
+import ClasificacionLiga.PartidoFutbol;
 
-	public void creaArrayEquipos() {
-		if (Liga.getJornadas()>0) {
-			for (int i=0;i<=9;i++) {
-				String nombre1=Liga.getEquipo1(0, i);
-				String nombre2=Liga.getEquipo2(0, i);
-				Equipo eq1 = new Equipo(nombre1);
-				Equipo eq2 = new Equipo(nombre2);
-				equipos[2*i]=eq1;
-				equipos[2*i+1]=eq2;
+public class Clasificacion {
+
+	private Liga liga;  // Liga que se clasifica
+	private Equipo equipo[];  // Array de equipos de esa liga
+
+	/** Crea una clasificación partiendo de una liga dada. La liga debe tener al menos una jornada disputada
+	 * para poder saber sus equipos
+	 * @param liga	Liga de referencia de la clasificación
+	 */
+	public Clasificacion (Liga liga) {
+		this.liga = liga;
+		creaArrayEquipos();
+	}
+	
+	public Equipo[] getEquipos() { return equipo; }
+	
+	public Liga getLiga() {
+		return liga;
+	}
+
+	private void creaArrayEquipos() {
+		if (liga.getJornadas()>0) {
+			equipo = new Equipo[ liga.getNumEquipos() ];
+			for (int par=0; par<liga.getPartidos(); par++) {
+				Partido p = liga.getPartido( 0, par );
+				if (p instanceof PartidoFutbol) {
+					equipo[par*2] = new EquipoFutbol( p.getNomEquipoL() );
+					equipo[par*2 + 1] = new EquipoFutbol( p.getNomEquipoV() );
+				}
 			}
 		}
-		else {
-			System.out.println("No se ha jugado ninguna jornada");
-			}
 	}
+
+	// Visualiza en consola los equipos del array de equipos con su puntuación actual
 	public void visualizaEquipos() {
-		for (Equipo i:equipos) {
-			System.out.println(i);
+		for (int eq=0; eq<equipo.length; eq++) {
+			System.out.println( "Equipo " + eq + ": " + equipo[eq].toString() );
 		}
 	}
-	public Equipo buscaEnArray(String nomEquipo) {
-		Equipo result=null;
-		for (Equipo i:equipos) {
-			if (nomEquipo==i.getNombre()) {
-				result=i;
+
+	private Equipo buscaEnArray(String nomEquipo) {
+		Equipo cual = null;
+		for (int eq=0; eq<equipo.length; eq++) {
+			if (equipo[eq].getNombre().equalsIgnoreCase( nomEquipo )) {
+				cual = equipo[eq];
 				break;
 			}
 		}
-		return result;
+		return cual;
 	}
-	public void calcPuntos() {
-		for (int i=0;i<Liga.getJornadas();i++) {
-			for (int j=0;j<=9;j++) {
-				if (Liga.getGoles1(i,j)>Liga.getGoles2(i, j)) {
-					Equipo eqGanador=buscaEnArray(Liga.getEquipo1(i, j));
-					eqGanador.incPuntos(3);
-				}
-				else if (Liga.getGoles2(i,j)>Liga.getGoles1(i, j)) {
-					Equipo eqGanador=buscaEnArray(Liga.getEquipo2(i, j));
-					eqGanador.incPuntos(3);
-				}
-				else {
-					Equipo eq1=buscaEnArray(Liga.getEquipo1(i, j));
-					eq1.incPuntos(1);
-					Equipo eq2=buscaEnArray(Liga.getEquipo2(i, j));
-					eq2.incPuntos(1);
-					
-				}
+	
+	/** Calcula los puntos, goles y partidos ganados/empatados/perdidos de todos los equipos.
+	 * Recorre las jornadas de la 0 a la última indicada y todos sus partidos, sumando
+	 * 3 puntos por victoria y 1 por empate y ninguno por derrota.
+	 * @param ultJornada	Última jornada a considerar
+	 */
+	public void calcPuntos( int ultJornada ) {
+		for (Equipo eq : equipo) eq.init();  // Inicia todos los puntos a 0
+		for (int jor=0; jor < Math.min( ultJornada+1, liga.getJornadas() ); jor++) {
+			for (int par=0; par<liga.getPartidos(); par++) {
+				Partido p = liga.getPartido( jor, par );
+				Equipo equipo1 = buscaEnArray( p.getNomEquipoL() );
+				Equipo equipo2 = buscaEnArray( p.getNomEquipoV() );
+				equipo1.calculaPartido( p );
+				equipo2.calculaPartido( p );
 			}
 		}
 	}
 
+	// Reordena el array de equipos de acuerdo a los puntos de cada uno
 	public void ordenaEquiposPorPuntos() {
-		int n= equipos.length;
-		for (int i = 0; i < n-1; i++) 
-            for (int j = 0; j < n-i-1; j++) 
-                if (equipos[j].getPuntos() < equipos[j+1].getPuntos()) 
-                { 
-                    Equipo temp = equipos[j]; 
-                    equipos[j] = equipos[j+1]; 
-                    equipos[j+1] = temp; 
-                } 
-	}
-	
-	public static void main(String[] args) {
-		Clasificacion clasif = new Clasificacion();
-		clasif.creaArrayEquipos();
-		clasif.calcPuntos();
-		System.out.println( "Equipos:" );
-		clasif.visualizaEquipos();
-		clasif.ordenaEquiposPorPuntos();
-		System.out.println( "Clasificaci�n:" );
-		clasif.visualizaEquipos();
-
+		for (int i=0; i<equipo.length-1; i++) {
+			for (int j=0; j<equipo.length-i-1; j++) {
+				if (!equipo[j].esMejorQue(equipo[j+1])) { 
+					Equipo eqTemp = equipo[j];
+					equipo[j] = equipo[j+1];
+					equipo[j+1] = eqTemp;
+				}
+			}
+		}
 	}
 
 }
