@@ -1,6 +1,6 @@
-package ClasificacionLiga;
+package datos;
 
-import ClasificacionLiga.Partido;
+import datos.Partido;
 
 public class PartidoFutbol extends Partido {
 

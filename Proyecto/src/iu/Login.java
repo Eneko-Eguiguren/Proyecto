@@ -1,5 +1,4 @@
 package iu;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -115,10 +114,6 @@ public class Login  extends JFrame{
 		this.setVisible(true);
 	}
 	public static void main(String[] args) {
-		
-//		try { // Cambiamos el look and feel (se tiene que hacer antes de crear la GUI
-//			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-//		} catch (Exception e) { }
 		new Login();
 	}
 }

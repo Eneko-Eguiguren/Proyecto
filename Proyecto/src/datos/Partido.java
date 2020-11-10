@@ -1,4 +1,4 @@
-package ClasificacionLiga;
+package datos;
 
 public abstract class Partido {
 	protected String nomEquipoL;

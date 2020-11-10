@@ -1,8 +1,8 @@
-package ClasificacionLiga;
+package datos;
 
 import datos.*;
-import visual.Tabla;
-import visual.VentanaGrafica;
+import iu.Tabla;
+import iu.VentanaGrafica;
 
 public class Main {
 

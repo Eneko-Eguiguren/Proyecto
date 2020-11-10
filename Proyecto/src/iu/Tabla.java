@@ -1,4 +1,4 @@
-package visual;
+package iu;
 
 import java.awt.Color;
 import java.awt.Font;

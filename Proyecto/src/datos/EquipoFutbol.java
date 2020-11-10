@@ -1,9 +1,10 @@
-package ClasificacionLiga;
+package datos;
 
-import ClasificacionLiga.Equipo;
-import ClasificacionLiga.EquipoFutbol;
-import ClasificacionLiga.Partido;
-import ClasificacionLiga.PartidoFutbol;
+
+import datos.Equipo;
+import datos.EquipoFutbol;
+import datos.Partido;
+import datos.PartidoFutbol;
 
 public class EquipoFutbol extends Equipo {
 

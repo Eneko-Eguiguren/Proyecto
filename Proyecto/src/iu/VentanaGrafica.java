@@ -1,4 +1,4 @@
-package visual;
+package iu;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
