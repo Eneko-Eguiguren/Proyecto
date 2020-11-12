@@ -1,4 +1,4 @@
-package iu;
+package interfazUsuario;
 
 import java.awt.Color;
 import java.awt.Font;

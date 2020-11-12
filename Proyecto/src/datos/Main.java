@@ -1,8 +1,8 @@
 package datos;
 
 import datos.*;
-import iu.Tabla;
-import iu.VentanaGrafica;
+import interfazUsuario.Tabla;
+import interfazUsuario.VentanaGrafica;
 
 public class Main {
 
