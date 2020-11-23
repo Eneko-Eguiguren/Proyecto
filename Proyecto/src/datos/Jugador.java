@@ -3,7 +3,7 @@ package datos;
 public class Jugador {
 
 	public String nombre;
-	public String equipo; // cambiar String por Equipo, cuando este implementado.
+	public Equipo equipo;
 	public int edad;
 	public String getNombre() {
 		return nombre;
@@ -11,10 +11,10 @@ public class Jugador {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getEquipo() {
+	public Equipo getEquipo() {
 		return equipo;
 	}
-	public void setEquipo(String equipo) {
+	public void setEquipo(Equipo equipo) {
 		this.equipo = equipo;
 	}
 	public int getEdad() {

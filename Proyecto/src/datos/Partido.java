@@ -1,28 +1,28 @@
 package datos;
 
 public abstract class Partido {
-	protected String nomEquipoL;
-	protected String nomEquipoV;
+	protected Equipo e1;
+	protected Equipo e2;
 	
-	public Partido(String nomEquipoL, String nomEquipoV ) {
-		this.nomEquipoL = nomEquipoL;
-		this.nomEquipoV = nomEquipoV;
+	public Partido(Equipo eq1,Equipo eq2 ) {
+		this.e1 = eq1;
+		this.e2 = eq2;
 	}
 
-	public String getNomEquipoL() {
-		return nomEquipoL;
+	public Equipo getE1() {
+		return e1;
 	}
 
-	public void setNomEquipoL(String nomEquipoL) {
-		this.nomEquipoL = nomEquipoL;
+	public void setE1(Equipo e1) {
+		this.e1 = e1;
 	}
 
-	public String getNomEquipoV() {
-		return nomEquipoV;
+	public Equipo getE2() {
+		return e2;
 	}
 
-	public void setNomEquipoV(String nomEquipoV) {
-		this.nomEquipoV = nomEquipoV;
+	public void setE2(Equipo e2) {
+		this.e2 = e2;
 	}
 
 }

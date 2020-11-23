@@ -32,8 +32,8 @@ public class Clasificacion {
 			for (int par=0; par<liga.getPartidos(); par++) {
 				Partido p = liga.getPartido( 0, par );
 				if (p instanceof PartidoFutbol) {
-					equipo[par*2] = new EquipoFutbol( p.getNomEquipoL() );
-					equipo[par*2 + 1] = new EquipoFutbol( p.getNomEquipoV() );
+					equipo[par*2] = new EquipoFutbol( p.getE1().getNombre() );
+					equipo[par*2 + 1] = new EquipoFutbol( p.getE2().getNombre() );
 				}
 			}
 		}
@@ -67,8 +67,8 @@ public class Clasificacion {
 		for (int jor=0; jor < Math.min( ultJornada+1, liga.getJornadas() ); jor++) {
 			for (int par=0; par<liga.getPartidos(); par++) {
 				Partido p = liga.getPartido( jor, par );
-				Equipo equipo1 = buscaEnArray( p.getNomEquipoL() );
-				Equipo equipo2 = buscaEnArray( p.getNomEquipoV() );
+				Equipo equipo1 = buscaEnArray( p.getE1().getNombre());
+				Equipo equipo2 = buscaEnArray( p.getE2().getNombre() );
 				equipo1.calculaPartido( p );
 				equipo2.calculaPartido( p );
 			}

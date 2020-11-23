@@ -5,7 +5,7 @@ import datos.Liga;
 import datos.Partido;
 import datos.PartidoFutbol;
 
-public class Liga {
+public class Liga extends Competicion{
 
 	public static final Liga LIGA_FUTBOL_EJEMPLO;
 
@@ -108,12 +108,12 @@ public class Liga {
 	public Partido getPartido( int numJornada, int numPartido ) {
 		if (equipoL[numJornada][numPartido]==null) return null;
 		if (deporte.equals("fútbol")) {
-			PartidoFutbol ret = new PartidoFutbol( 
-					equipoL[numJornada][numPartido], 
-					equipoV[numJornada][numPartido], 
-					puntosL[numJornada][numPartido],
-					puntosV[numJornada][numPartido] );
-			return ret;
+//			PartidoFutbol ret = new PartidoFutbol( 
+//					equipoL[numJornada][numPartido], 
+//					equipoV[numJornada][numPartido], 
+//					puntosL[numJornada][numPartido],
+//					puntosV[numJornada][numPartido] );
+			return null;
 		}
 		return null;
 	}

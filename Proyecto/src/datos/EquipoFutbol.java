@@ -100,7 +100,7 @@ public class EquipoFutbol extends Equipo {
 	public void calculaPartido( Partido p ) {
 		if (!(p instanceof PartidoFutbol)) return; 
 		PartidoFutbol pf = (PartidoFutbol) p;
-		if (nombre.equals(p.getNomEquipoL())) { 
+		if (nombre.equals(p.e1.getNombre())) { 
 			incGf( pf.getGolesEquipoL() );
 			incGc( pf.getGolesEquipoV() );
 			if (pf.getGolesEquipoL() > pf.getGolesEquipoV()) { 

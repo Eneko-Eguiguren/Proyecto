@@ -6,9 +6,11 @@ import datos.Equipo;
 import datos.Partido;
 
 
-public abstract class Equipo {
+public abstract class Equipo implements DatoParaTabla {
 	protected String nombre;
 	protected double puntos;
+	public static final boolean[] COLUMNAS_EDITABLES = { false, false, false };
+	public static final String[] NOMBRES_COLUMNAS = { "Nombre", "Puntos", "Rebotes","Triples"};
 	
 	public Equipo( String nombre ) {
 		this.nombre = nombre;
