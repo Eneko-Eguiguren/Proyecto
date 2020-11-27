@@ -3,42 +3,70 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import datos.Usuario;
 public class TestConexion {
-	public static void main(String[] args) {
-		Conexion conexion = new Conexion();
-		Connection cn = null;
-		Statement stm = null;
-		ResultSet rs = null;
+	public static ArrayList<Usuario> usuarios ;
+	public TestConexion() {
 		
+		Conexion conexion1 = new Conexion();
+		Connection cn1 = null;
+		Statement stm1= null;
+		ResultSet rs1 = null;
+		usuarios = new ArrayList<Usuario>();
+		HashMap<Integer, Usuario > mapaUsuarios = new HashMap<Integer, Usuario>();
+		int key= 0;
 		
 		try {
-			cn = conexion.conectar();
-			stm = cn.createStatement();
-			rs = stm.executeQuery("SELECT * FROM usuario");
+//			cn = conexion.conectar();
+//			stm = cn.createStatement();
+//			rs = stm.executeQuery("SELECT * FROM usuario");
+			cn1 = conexion1.conectar();
+			stm1 = cn1.createStatement();
+			rs1 = stm1.executeQuery("SELECT * FROM usuario");
 			
-			while(rs.next()) {
-				int cod_usuario  = rs.getInt(1);
-				String nom_usuario = rs.getString(2);
-				String clave = rs.getString(3);
+			while(rs1.next()) {
+				key = key+1;
+				int cod_usuario  = rs1.getInt(1);
+				String nom_usuario = rs1.getString(2);
+				String clave = rs1.getString(3);
+				//int cod_competicion = rs1.getInt(2);
+				Usuario u = new Usuario(nom_usuario, clave, cod_usuario);
+				usuarios.add(u);
+				mapaUsuarios.put(key, u);
 				
-				System.out.println(cod_usuario + " - " + nom_usuario + " - " + clave);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null) {
-					rs.close();
+				if (rs1 != null) {
+					rs1.close();
 				}
-				if (stm != null) {
-					stm.close();
+				if (stm1 != null) {
+					stm1.close();
 				}
-				if (cn != null) {
-					cn.close();
+				if (cn1 != null) {
+					cn1.close();
+				}
+				if (rs1 != null) {
+					rs1.close();
 				}
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
 		}
+		
+	}
+	public String getNombreU(int num) {
+		return usuarios.get(num).getNombre();
+		
+	}
+	public static void main(String[] args) {
+		 System.out.println(usuarios);
+		 System.out.println(usuarios.get(0).getNombre());
+		
 	}
 }

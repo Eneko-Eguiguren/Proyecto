@@ -3,11 +3,19 @@ package datos;
 import java.util.ArrayList;
 
 public class Usuario {
+	
 
 	public String nombre;
-	public char[] contraseña;
+	public String contraseña;
+	public int codigo;
 	public ArrayList<String> equiposFavoritos ; // Array de equipos, no de strings
 	public ArrayList<String> competicionesFavoritas ;
+	
+	public Usuario(String nom, String contr, int cod) {
+		this.nombre = nom;
+		this.contraseña = contr;
+		this.codigo = cod;
+	}
 	
 	public String getNombre() {
 		return nombre;
@@ -15,10 +23,10 @@ public class Usuario {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public char[] getContraseña() {
+	public String getContraseña() {
 		return contraseña;
 	}
-	public void setContraseña(char[] contraseña) {
+	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
 	}
 	public ArrayList<String> getEquiposFavoritos() {
