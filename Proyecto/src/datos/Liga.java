@@ -7,7 +7,7 @@ import datos.PartidoFutbol;
 
 public class Liga extends Competicion{
 
-	public static final Liga LIGA_FUTBOL_EJEMPLO;
+	//public static final Liga LIGA_FUTBOL_EJEMPLO;
 
 	private static String equipoFut1[][] = new String[38][10];  // Equipo 1 de cada partido [jornada][partido] (jornada de 0 a 37, partido de 0 a 9)
 	private static String equipoFut2[][] = new String[38][10];  // Equipo 2 de cada partido [jornada][partido] (jornada de 0 a 37, partido de 0 a 9)
@@ -16,7 +16,7 @@ public class Liga extends Competicion{
 	
 	static {
 		initDesdeTabla();  // Carga los resultados desde una tabla de memoria
-		LIGA_FUTBOL_EJEMPLO = new Liga( "fútbol", equipoFut1, equipoFut2, golesFut1, golesFut2 );
+		//LIGA_FUTBOL_EJEMPLO = new Liga( "fútbol", equipoFut1, equipoFut2, golesFut1, golesFut2 );
 			}
 	
 	/** Test de jornadas de liga de fútbol
@@ -81,25 +81,25 @@ public class Liga extends Competicion{
 	private double subpuntosL[][]; // Subpuntos de equipo local de cada partido [jornada][partido]
 	private double subpuntosV[][]; // Subpuntos de equipo visitante de cada partido [jornada][partido]
 
-	public Liga( String deporte, String equipoL[][], String equipoV[][], int puntosL[][], int puntosV[][], double subpuntosL[][], double subpuntosV[][] ) {
-		this.deporte = deporte;
-		this.equipoL = equipoL;
-		this.equipoV = equipoV;
-		this.puntosL = puntosL;
-		this.puntosV = puntosV;
-		this.subpuntosL = subpuntosL;
-		this.subpuntosV = subpuntosV;
-	}
+//	public Liga( String deporte, String equipoL[][], String equipoV[][], int puntosL[][], int puntosV[][], double subpuntosL[][], double subpuntosV[][] ) {
+//		this.deporte = deporte;
+//		this.equipoL = equipoL;
+//		this.equipoV = equipoV;
+//		this.puntosL = puntosL;
+//		this.puntosV = puntosV;
+//		this.subpuntosL = subpuntosL;
+//		this.subpuntosV = subpuntosV;
+//	}
 
-	public Liga( String deporte, String equipoL[][], String equipoV[][], int puntosL[][], int puntosV[][] ) {
-		this.deporte = deporte;
-		this.equipoL = equipoL;
-		this.equipoV = equipoV;
-		this.puntosL = puntosL;
-		this.puntosV = puntosV;
-		this.subpuntosL = null;
-		this.subpuntosV = null;
-	}
+//	public Liga( String deporte, String equipoL[][], String equipoV[][], int puntosL[][], int puntosV[][] ) {
+//		this.deporte = deporte;
+//		this.equipoL = equipoL;
+//		this.equipoV = equipoV;
+//		this.puntosL = puntosL;
+//		this.puntosV = puntosV;
+//		this.subpuntosL = null;
+//		this.subpuntosV = null;
+//	}
 
 	public String getDeporte() {
 		return deporte;

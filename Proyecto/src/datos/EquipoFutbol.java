@@ -140,5 +140,20 @@ public class EquipoFutbol extends Equipo {
 	public String toString() {
 		return super.toString() + " " + gf + " GF y " + gc + " GC. PG/E/P = " + pg + "/" + pe + "/" + pp;
 	}
+	@Override
+	public int getNumColumnas() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public Object getValor(int col) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void setValor(Object value, int col) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

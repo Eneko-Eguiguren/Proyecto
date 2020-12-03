@@ -73,19 +73,19 @@ public Registro() {
 			
 		}
 	});
-	accept.addActionListener(new ActionListener() {
-		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			if(password.getPassword().equals( repeatPassword.getPassword())) {
-				char[] c = password.getPassword();
-				Usuario usr = new Usuario();
-				usr.setContraseña(c);
-				usr.setNombre(name.getText());
-			}
-			
-		}
-	});
+//	accept.addActionListener(new ActionListener() {
+//		
+//		@Override
+//		public void actionPerformed(ActionEvent e) {
+//			if(password.getPassword().equals( repeatPassword.getPassword())) {
+//				char[] c = password.getPassword();
+//				Usuario usr = new Usuario(name.getText(), c, 1);
+//				usr.setContraseña(c);
+//				usr.setNombre(name.getText());
+//			}
+//			
+//		}
+//	});
 	//
 	this.setVisible(true);
 	
