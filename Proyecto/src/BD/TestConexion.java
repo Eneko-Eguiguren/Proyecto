@@ -20,9 +20,7 @@ public class TestConexion {
 		int key= 0;
 		
 		try {
-//			cn = conexion.conectar();
-//			stm = cn.createStatement();
-//			rs = stm.executeQuery("SELECT * FROM usuario");
+
 			cn1 = conexion1.conectar();
 			stm1 = cn1.createStatement();
 			rs1 = stm1.executeQuery("SELECT * FROM usuario");
@@ -67,6 +65,6 @@ public class TestConexion {
 	public static void main(String[] args) {
 		 System.out.println(usuarios);
 		 System.out.println(usuarios.get(0).getNombre());
-		//prueba
+		//PRUEBA
 	}
 }
