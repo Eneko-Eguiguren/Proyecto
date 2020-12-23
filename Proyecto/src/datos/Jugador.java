@@ -3,19 +3,34 @@ package datos;
 public class Jugador {
 
 	public String nombre;
-	public Equipo equipo;
+	public int cod_equipo;
+	public int numero;
 	public int edad;
+	public Jugador(String nom,int cEquipo, int num, int edad) {
+		this.nombre = nom;
+		this.cod_equipo = cEquipo;
+		this.numero = num;
+		this.edad = edad;
+		
+	}
+	public int getNumero() {
+		return numero;
+	}
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Equipo getEquipo() {
-		return equipo;
+	public int getEquipo() {
+		return cod_equipo;
 	}
-	public void setEquipo(Equipo equipo) {
-		this.equipo = equipo;
+	public void setEquipo(int cequipo) {
+		this.cod_equipo = cequipo;
 	}
 	public int getEdad() {
 		return edad;

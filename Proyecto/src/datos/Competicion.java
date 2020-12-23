@@ -2,11 +2,13 @@ package datos;
 
 import java.util.ArrayList;
 
+import BD.ExtraccionBD;
+
 public class Competicion {
 	
 	public ArrayList<Equipo> equipos = new ArrayList<Equipo>();
 	public String nombre;
-	public Equipo ganador;
+	public int codigo;
 	public ArrayList<Equipo> getEquipos() {
 		return equipos;
 	}
@@ -23,10 +25,10 @@ public class Competicion {
 		this.nombre = nombre;
 	}
 
-	public Competicion (ArrayList<Equipo> equipos, String nombre, Equipo ganador ) {
+	public Competicion (ArrayList<Equipo> equipos, String nombre, int cod_comp ) {
 		this.equipos = equipos;
 		this.nombre = nombre;
-		this.ganador = ganador;
+		this.codigo = cod_comp;
 	}
 
 }
