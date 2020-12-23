@@ -38,7 +38,7 @@ public class Login  extends JFrame{
 		JPanel panel = new JPanel();
 		JLabel title1 = new JLabel("HISTORY");
 		JLabel title2 = new JLabel("FOOTBALL");
-		JLabel icon = new JLabel(new ImageIcon("src/images/icono7.png"));
+		JLabel icon = new JLabel(new ImageIcon("src/images/icono2.png"));
 		JLabel usr = new JLabel("USUARIO");
 		JLabel password = new JLabel("CONTRASEÑA");
 		JTextField usrTxt = new JTextField(20);
@@ -57,7 +57,7 @@ public class Login  extends JFrame{
 		delete.setBounds(240, 260, 100, 40);
 		title1.setBounds(90, 20, 130, 100);
 		title2.setBounds(246, 20, 130, 100);
-		icon.setBounds(190, 40, 54, 54);
+		icon.setBounds(193, 40, 54, 64);
 		register.setBounds(160, 330, 140, 40);
 		
 		icon.setBackground(color);
