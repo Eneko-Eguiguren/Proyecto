@@ -1,53 +1,39 @@
 package datos;
 
+import java.util.ArrayList;
 
-import datos.Equipo;
-
-import datos.Partido;
-
-
-public abstract class Equipo implements DatoParaTabla {
-	protected String nombre;
-	protected double puntos;
-	public static final boolean[] COLUMNAS_EDITABLES = { false, false, false };
-	public static final String[] NOMBRES_COLUMNAS = { "Nombre", "Puntos", "Rebotes","Triples"};
+public class Equipo {
+	public int codigo;
+	public String nombre;
+	public ArrayList<Jugador> jugsDeEquipo;
 	
-	public Equipo( String nombre ) {
-		this.nombre = nombre;
-		init();
+	public Equipo(int code, String name) {
+		this.codigo = code;
+		this.nombre = name;
+
 	}
 
-	public void init() {
-		puntos = 0;
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getNombre() {
 		return nombre;
 	}
 
-	public double getPuntos() {
-		return puntos;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public void setPuntos(double puntos) {
-		puntos += puntos;
+	public ArrayList<Jugador> getJugsDeEquipo() {
+		return jugsDeEquipo;
 	}
 
-	public void incPuntos(double puntosMas) {
-		puntos += puntosMas;
+	public void setJugsDeEquipo(ArrayList<Jugador> jugsDeEquipo) {
+		this.jugsDeEquipo = jugsDeEquipo;
 	}
-
-	public abstract void calculaPartido( Partido p );
-
-	public abstract boolean esMejorQue( Equipo e2 );
-
-	public abstract String[] getCabs();
-
-	public abstract int[] getCols();
-	
-	@Override
-	public String toString() {
-		return nombre + " - " + puntos + " puntos.";
-	}
-	
 }

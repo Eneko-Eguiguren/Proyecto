@@ -41,6 +41,12 @@ public class Usuario {
 	public void setCompeticionesFavoritas(ArrayList<String> competicionesFavoritas) {
 		this.competicionesFavoritas = competicionesFavoritas;
 	} 
-	
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
 	
 }

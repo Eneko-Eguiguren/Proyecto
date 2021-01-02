@@ -3,7 +3,8 @@ package datos;
 public abstract class Partido {
 	protected Equipo e1;
 	protected Equipo e2;
-	
+	public int cod_equipo;
+	public int anyo;
 	public Partido(Equipo eq1,Equipo eq2 ) {
 		this.e1 = eq1;
 		this.e2 = eq2;
