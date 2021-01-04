@@ -22,9 +22,6 @@ import datos.Usuario;
 
 public class Login  extends JFrame{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	Color color = new Color(200,180,150);
 	CustomFont cf = new CustomFont();
@@ -43,6 +40,7 @@ public class Login  extends JFrame{
 		JLabel password = new JLabel("CONTRASEÑA");
 		JTextField usrTxt = new JTextField(20);
 		JPasswordField passwordTxt = new JPasswordField(30);
+		JButton admin = new JButton("ADMIN");
 		JButton accept = new JButton("Entrar");
 		JButton delete = new JButton("Borrar");
 		JButton register = new JButton("¿Eres nuevo?");
@@ -59,6 +57,7 @@ public class Login  extends JFrame{
 		title2.setBounds(246, 20, 130, 100);
 		icon.setBounds(193, 40, 54, 64);
 		register.setBounds(160, 330, 140, 40);
+		admin.setBounds(365, 340, 100, 50);
 		
 		icon.setBackground(color);
 		title1.setFont(cf.MyFont(1, 24));
@@ -67,6 +66,9 @@ public class Login  extends JFrame{
 		title2.setForeground(Color.BLACK);
 		register.setBorderPainted(false);
 		register.setBackground(color);
+		admin.setBorderPainted(false);
+		admin.setForeground(Color.BLACK);
+		admin.setBackground(color);
 		accept.setBackground(Color.BLACK);
 		accept.setForeground(Color.WHITE);
 		delete.setBackground(Color.BLACK);
@@ -86,7 +88,17 @@ public class Login  extends JFrame{
 		panel.add(title1);
 		panel.add(icon);
 		panel.add(title2);
+		panel.add(admin);
 		//
+		admin.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				new VentanaAdmin();
+				dispose();
+			}
+		});
 		delete.addActionListener(new ActionListener() {
 			
 			@Override
