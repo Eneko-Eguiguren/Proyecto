@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
@@ -34,6 +35,7 @@ public class Principal extends JFrame {
 		JButton icon = new JButton(new ImageIcon("src/images/lineas.png"));
 		JButton anyadirFavs = new JButton(new ImageIcon("src/images/fav3.png"));
 		JComboBox<String> anyos = new JComboBox<String>();
+		JMenuBar barraMenu = new JMenuBar();
 		for (int i = 1950; i < 2020; i++) {
 			String numero = String.valueOf(i);
 			anyos.addItem(numero);
@@ -58,6 +60,7 @@ public class Principal extends JFrame {
 		competicionesFav.setBorderPainted(false);
 		p.setLayout(null);
 		pSuperior.setLayout(null);
+		this.setJMenuBar(barraMenu);
 		
 		anyadirFavs.setToolTipText("Añadir Jugadores/Competiciones favoritos.");
 		selecUsuarios.setToolTipText("Selecciona otro usuario.");

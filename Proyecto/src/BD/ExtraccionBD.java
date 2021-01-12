@@ -1,10 +1,14 @@
 package BD;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import datos.Competicion;
 import datos.Equipo;
@@ -18,6 +22,16 @@ public class ExtraccionBD {
 	public static HashMap<Usuario, ArrayList<Equipo>> mapaUsEq = new HashMap<Usuario, ArrayList<Equipo>>();
 	public static HashMap<Usuario, ArrayList<Competicion>> mapaUsComp = new HashMap<Usuario, ArrayList<Competicion>>();
 	public static HashMap<String, ArrayList<Equipo>> mapaEqComp = new HashMap<String, ArrayList<Equipo>>();
+	private static Logger logger = Logger.getLogger(ExtraccionBD.class.getName());
+	private static final boolean ANYADIR_A_FIC_LOG = false; // poner true para no sobreescribir
+	static {
+		try {
+			logger.addHandler(
+					new FileHandler("src/logs/" + ExtraccionBD.class.getName() + ".log.xml", ANYADIR_A_FIC_LOG));
+		} catch (SecurityException | IOException e) {
+			logger.log(Level.SEVERE, "Error en creacion fichero log");
+		}
+	}
 	public static void EquiposBD() {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -35,9 +49,11 @@ public class ExtraccionBD {
 				String nombre = rs1.getString(2);
 				Equipo eq = new Equipo(cod_equipo, nombre);
 				equipos.add(eq);
+				logger.log(Level.INFO, "Equipo sacado de BD correctamente.");
 				}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
 		} finally {
 			try {
 				if (rs1 != null) {
@@ -70,10 +86,11 @@ public class ExtraccionBD {
 			while(rs1.next()) {
 				Equipo eq = new Equipo(cod, nombre);
 				equipos.add(eq);
-				
+				logger.log(Level.INFO, "Equipo añadido a BD correctamente.");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
 		} finally {
 			try {
 				if (rs1 != null) {
@@ -106,10 +123,11 @@ public class ExtraccionBD {
 			while(rs1.next()) {
 				Usuario usr = new Usuario(nom, contr, cod);
 				usuarios.add(usr);
-				
+				logger.log(Level.INFO, "Usuario añadido a BD correctamente.");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
 		} finally {
 			try {
 				if (rs1 != null) {
@@ -148,10 +166,11 @@ public class ExtraccionBD {
 				String clave = rs1.getString(3);
 				Usuario u = new Usuario(nom_usuario, clave, cod_usuario);
 				usuarios.add(u);
-				
+				logger.log(Level.INFO, "Usuario sacado de BD correctamente.");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
 		} finally {
 			try {
 				if (rs1 != null) {
@@ -187,10 +206,11 @@ public class ExtraccionBD {
 			while(rs1.next()) {
 				Jugador jug = new Jugador(n,codequipo,num,edad);
 				jugadores.add(jug);
-				
+				logger.log(Level.INFO, "Jugador añadido a BD correctamente.");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
 		} finally {
 			try {
 				if (rs1 != null) {
@@ -230,11 +250,12 @@ public class ExtraccionBD {
 				int edad = rs1.getInt(4);
 				Jugador jug = new Jugador(nombre, cod_equipo, num_jug, edad);
 				jugadores.add(jug);
-				
+				logger.log(Level.INFO, "Jugador sacado de BD correctamente.");
 				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
 		} finally {
 			try {
 				if (rs1 != null) {
@@ -269,10 +290,11 @@ public class ExtraccionBD {
 			while(rs1.next()) {
 				Competicion comp = new Competicion(eqs, n, cod, anyo, pais, c, sc);
 				competiciones.add(comp);
-				
+				logger.log(Level.INFO, "Competicion añadida a BD correctamente.");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
 		} finally {
 			try {
 				if (rs1 != null) {
@@ -325,18 +347,23 @@ public class ExtraccionBD {
 						 subcamp = e;
 					}
 				}
+				boolean existe = false;
 				for (Competicion comp : competiciones) {
 					if (comp.getCodigo()== cod_comp) {
-						
+						existe = true;
 					}
 				}
+				
+				if(camp!=null && subcamp!=null && existe==false ) {
 				Competicion c = new Competicion(mapaEqComp.get(nombre), nombre, cod_comp, anyo, pais,camp,subcamp);
 				competiciones.add(c);
-				
+				logger.log(Level.INFO, "Competicion sacada de BD correctamente.");
+				}
 				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
 		} finally {
 			try {
 				if (rs1 != null) {
@@ -394,6 +421,7 @@ public class ExtraccionBD {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
 		} finally {
 			try {
 				if (rs1 != null) {
@@ -432,6 +460,7 @@ public class ExtraccionBD {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
 		} finally {
 			try {
 				if (rs1 != null) {
@@ -488,6 +517,7 @@ public class ExtraccionBD {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
 		} finally {
 			try {
 				if (rs1 != null) {
@@ -526,6 +556,7 @@ public class ExtraccionBD {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
 		} finally {
 			try {
 				if (rs1 != null) {
@@ -582,6 +613,7 @@ public class ExtraccionBD {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
 		} finally {
 			try {
 				if (rs1 != null) {
@@ -620,6 +652,7 @@ public class ExtraccionBD {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
 		} finally {
 			try {
 				if (rs1 != null) {

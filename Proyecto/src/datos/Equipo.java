@@ -36,4 +36,13 @@ public class Equipo {
 	public void setJugsDeEquipo(ArrayList<Jugador> jugsDeEquipo) {
 		this.jugsDeEquipo = jugsDeEquipo;
 	}
+	public boolean equals(Object o) {
+		boolean igual = false;
+		if (o instanceof Equipo) {
+			if (this.nombre == ((Equipo) o).getNombre() && this.codigo== ((Equipo) o).getCodigo() ) {
+				igual = true; 
+		}
+			}
+		return igual;
+	}
 }

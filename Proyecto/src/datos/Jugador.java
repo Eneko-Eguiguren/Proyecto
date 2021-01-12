@@ -39,4 +39,13 @@ public class Jugador {
 		this.edad = edad;
 		//
 	}
+	public boolean equals(Object o) {
+		boolean igual = false;
+		if (o instanceof Jugador) {
+			if (this.nombre == ((Jugador) o).getNombre() && this.cod_equipo== ((Jugador) o).getEdad()) {
+				igual = true; 
+		}
+			}
+		return igual;
+	}
 }

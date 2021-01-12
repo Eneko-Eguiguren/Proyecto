@@ -54,5 +54,13 @@ public class Competicion {
 	public void setAnyo(int anyo) {
 		this.anyo = anyo;
 	}
-
+	public boolean equals(Object o) {
+		boolean igual = false;
+		if (o instanceof Competicion) {
+			if (this.nombre == ((Competicion) o).getNombre() && this.codigo== ((Competicion) o).getCodigo()) {
+				igual = true; 
+		}
+			}
+		return igual;
+	}
 }

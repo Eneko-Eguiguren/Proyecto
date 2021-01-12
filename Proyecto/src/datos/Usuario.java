@@ -48,5 +48,13 @@ public class Usuario {
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-	
+	public boolean equals(Object o) {
+		boolean igual = false;
+		if (o instanceof Usuario) {
+			if (this.nombre == ((Usuario) o).getNombre() && this.codigo== ((Usuario) o).getCodigo()) {
+				igual = true; 
+		}
+			}
+		return igual;
+	}
 }
