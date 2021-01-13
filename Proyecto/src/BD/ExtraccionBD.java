@@ -32,7 +32,7 @@ public class ExtraccionBD {
 			logger.log(Level.SEVERE, "Error en creacion fichero log");
 		}
 	}
-	public static void EquiposBD() {
+	public static void actualizarEquiposBD() {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
 		Statement stm1= null;
@@ -147,7 +147,7 @@ public class ExtraccionBD {
 			}
 		}
 	}
-	public static void UsuariosBD() {
+	public static void actualizarUsuariosBD() {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
 		Statement stm1= null;
@@ -230,7 +230,7 @@ public class ExtraccionBD {
 			}
 		}
 	}
-	public static void JugadoresBD() {
+	public static void actualizarJugadoresBD() {
 		
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -314,7 +314,7 @@ public class ExtraccionBD {
 			}
 		}
 	}
-	public static void CompeticionesBD() {
+	public static void actualizarCompeticionesBD() {
 		
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -384,7 +384,7 @@ public class ExtraccionBD {
 		}
 		
 	}
-	public static void UsuarioEquipoBD() {
+	public static void actualizarUsuarioEquipoBD() {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
 		Statement stm1= null;
@@ -480,7 +480,7 @@ public class ExtraccionBD {
 			}
 		}
 	}
-	public static void usuarioCompeticionBD() {
+	public static void actualizarusuarioCompeticionBD() {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
 		Statement stm1= null;
@@ -576,7 +576,7 @@ public class ExtraccionBD {
 			}
 		}
 	}
-	public static void equipoCompeticionBD() {
+	public static void actualizarEquipoCompeticionBD() {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
 		Statement stm1= null;

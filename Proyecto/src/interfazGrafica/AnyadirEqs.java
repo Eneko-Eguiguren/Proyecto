@@ -1,4 +1,4 @@
-package interfazUsuario;
+package interfazGrafica;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +15,8 @@ import datos.Equipo;
 
 public class AnyadirEqs extends JFrame {
 
-	
+	private static final long serialVersionUID = 1L;
+
 	public AnyadirEqs() {
 		this.setTitle("Añadir Equipos Nuevos");
 		this.setBounds(440, 160, 485, 430);

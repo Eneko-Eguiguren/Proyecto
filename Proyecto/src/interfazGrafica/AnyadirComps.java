@@ -1,4 +1,4 @@
-package interfazUsuario;
+package interfazGrafica;
 
 public class AnyadirComps {
 
