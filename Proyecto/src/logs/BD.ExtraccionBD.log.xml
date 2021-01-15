@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678494</millis>
+  <sequence>0</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarEquiposBD</method>
+  <thread>1</thread>
+  <message>Equipo sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678504</millis>
+  <sequence>1</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarEquiposBD</method>
+  <thread>1</thread>
+  <message>Equipo sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678505</millis>
+  <sequence>2</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarEquiposBD</method>
+  <thread>1</thread>
+  <message>Equipo sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678507</millis>
+  <sequence>3</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarEquiposBD</method>
+  <thread>1</thread>
+  <message>Equipo sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678508</millis>
+  <sequence>4</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarEquiposBD</method>
+  <thread>1</thread>
+  <message>Equipo sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678509</millis>
+  <sequence>5</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarEquiposBD</method>
+  <thread>1</thread>
+  <message>Equipo sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678509</millis>
+  <sequence>6</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarEquiposBD</method>
+  <thread>1</thread>
+  <message>Equipo sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678510</millis>
+  <sequence>7</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarEquiposBD</method>
+  <thread>1</thread>
+  <message>Equipo sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678510</millis>
+  <sequence>8</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarEquiposBD</method>
+  <thread>1</thread>
+  <message>Equipo sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678511</millis>
+  <sequence>9</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarEquiposBD</method>
+  <thread>1</thread>
+  <message>Equipo sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678512</millis>
+  <sequence>10</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarEquiposBD</method>
+  <thread>1</thread>
+  <message>Equipo sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678512</millis>
+  <sequence>11</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarEquiposBD</method>
+  <thread>1</thread>
+  <message>Equipo sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678533</millis>
+  <sequence>12</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678534</millis>
+  <sequence>13</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678534</millis>
+  <sequence>14</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678534</millis>
+  <sequence>15</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678535</millis>
+  <sequence>16</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678535</millis>
+  <sequence>17</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678536</millis>
+  <sequence>18</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678536</millis>
+  <sequence>19</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678537</millis>
+  <sequence>20</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678537</millis>
+  <sequence>21</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678538</millis>
+  <sequence>22</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678538</millis>
+  <sequence>23</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678538</millis>
+  <sequence>24</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678539</millis>
+  <sequence>25</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678539</millis>
+  <sequence>26</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678539</millis>
+  <sequence>27</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678540</millis>
+  <sequence>28</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678540</millis>
+  <sequence>29</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarJugadoresBD</method>
+  <thread>1</thread>
+  <message>Jugador sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678799</millis>
+  <sequence>30</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarUsuariosBD</method>
+  <thread>1</thread>
+  <message>Usuario sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678799</millis>
+  <sequence>31</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarUsuariosBD</method>
+  <thread>1</thread>
+  <message>Usuario sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678799</millis>
+  <sequence>32</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarUsuariosBD</method>
+  <thread>1</thread>
+  <message>Usuario sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678800</millis>
+  <sequence>33</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarUsuariosBD</method>
+  <thread>1</thread>
+  <message>Usuario sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678800</millis>
+  <sequence>34</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarUsuariosBD</method>
+  <thread>1</thread>
+  <message>Usuario sacado de BD correctamente.</message>
+</record>
+<record>
+  <date>2021-01-15T12:21:18</date>
+  <millis>1610709678800</millis>
+  <sequence>35</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>actualizarUsuariosBD</method>
+  <thread>1</thread>
+  <message>Usuario sacado de BD correctamente.</message>
+</record>
+</log>

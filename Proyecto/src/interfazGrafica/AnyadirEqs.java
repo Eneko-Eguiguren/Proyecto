@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -31,7 +32,9 @@ public class AnyadirEqs extends JFrame {
 		JLabel codigo = new JLabel("Codigo");
 		JButton accept = new JButton("Aceptar");
 		JButton delete = new JButton("Eliminar");
+		JButton atras = new JButton("Atras");
 		//
+		panel.setBackground(Login.color);
 		panel.setLayout(null);
 		nombre.setBounds(70, 130, 70, 25);
 		codigo.setBounds(70, 190, 100, 25);
@@ -40,6 +43,7 @@ public class AnyadirEqs extends JFrame {
 		accept.setBounds(115, 260, 100, 40);
 		delete.setBounds(240, 260, 100, 40);
 		title.setBounds(180, 20, 130, 100);
+		atras.setBounds(180, 340, 100, 30);
 		//
 		this.add(panel);
 		panel.add(nombreTxt);
@@ -49,6 +53,7 @@ public class AnyadirEqs extends JFrame {
 		panel.add(delete);
 		panel.add(accept);
 		panel.add(title);
+		panel.add(atras);
 		//
 		accept.addActionListener(new ActionListener() {
 			
@@ -56,19 +61,27 @@ public class AnyadirEqs extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String nom = nombreTxt.getText();
-				String c = codigoTxt.getText();
-				int cod = Integer.parseInt(c);
-				Equipo eqTemporal = new Equipo(cod, nom);
-				esta = false;
-				for (Equipo eq : ExtraccionBD.equipos) {
-					if(eq.equals(eqTemporal)) {
-					 esta = true;
+				try {
+					String nom = nombreTxt.getText();
+					String c = codigoTxt.getText();
+					int cod = Integer.parseInt(c);
+					System.out.println(cod);
+					Equipo eqTemporal = new Equipo(cod, nom);
+					esta = false;
+					for (Equipo eq : ExtraccionBD.equipos) {
+						if(eq.equals(eqTemporal)) {
+						 esta = true;
+						}
 					}
+					if(esta == false) {
+						//ExtraccionBD.addEquiposBD(cod, nom);
+					}else if (nom==null || c==null ){
+						JOptionPane.showMessageDialog(null, "Introduzca datos.");
+					}
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Datos no válidos.");
 				}
-				if(esta == false) {
-					ExtraccionBD.addEquiposBD(cod, nom);
-				}// poner el error sobre panatalla
+				
 			}
 		});
 		delete.addActionListener(new ActionListener() {
@@ -77,6 +90,15 @@ public class AnyadirEqs extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				codigoTxt.setText(null);
 				nombreTxt.setText(null);
+				
+			}
+		});
+		atras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaAdmin();
+				dispose();
 				
 			}
 		});

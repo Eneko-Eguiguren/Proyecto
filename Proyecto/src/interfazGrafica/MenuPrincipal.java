@@ -36,6 +36,8 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem addCompetitions = new JMenuItem("Añadir competiciones", new ImageIcon("src/images/anyadir.png"));
 		JMenuItem favoriteTeams = new JMenuItem("Mis equipos favoritos", new ImageIcon("src/images/fav2.png"));
 		JMenuItem favoriteCompetitions = new JMenuItem("Mis competiciones favoritas", new ImageIcon("src/images/fav2.png"));
+		JMenuItem filtros = new JMenuItem("Filtrar resultados");
+		JMenuItem cerrarSesion = new JMenuItem("Cerrar Sesion"); 
 		//
 		mBar.setBackground(color);
 		space.setEnabled(false);
@@ -49,11 +51,14 @@ public class MenuPrincipal extends JFrame {
 		miCuenta.setIcon(new ImageIcon("src/images/user.png"));
 		lineas.setIcon(new ImageIcon("src/images/menu.png"));
 		settings.setIcon(new ImageIcon("src/images/setting.png"));
+		cerrarSesion.setIcon(new ImageIcon("src/images/cerrarsesion.png"));
 		mBar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		addTeams.setFont(f);
 		addCompetitions.setFont(f);
 		favoriteTeams.setFont(f);
 		favoriteCompetitions.setFont(f);
+		filtros.setFont(f);
+		cerrarSesion.setFont(f);
 		
 		//
 		this.setJMenuBar(mBar);
@@ -73,6 +78,8 @@ public class MenuPrincipal extends JFrame {
 		addFavoritos.add(addCompetitions);
 		misEquipos.add(favoriteTeams);
 		misCompeticiones.add(favoriteCompetitions);
+		lineas.add(filtros);
+		miCuenta.add(cerrarSesion);
 		//
 		this.setVisible(true);
 	}

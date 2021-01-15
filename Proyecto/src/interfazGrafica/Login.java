@@ -1,4 +1,5 @@
 package interfazGrafica;
+
 import java.awt.Color;
 
 import java.awt.event.ActionEvent;
@@ -9,23 +10,25 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import BD.ExtraccionBD;
 import CFont.CustomFont;
 import datos.Usuario;
 
-
-
-public class Login  extends JFrame{
+public class Login extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	Color color = new Color(200,180,150);
+	static Color color = new Color(200, 180, 150);
 	CustomFont cf = new CustomFont();
 	public ArrayList<Usuario> usuarios;
+
 	public Login() {
 		//
-		this.setTitle("LogIn");
+		this.setTitle("HistoryFootball  -  LogIn");
 		this.setBounds(440, 160, 485, 430);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		//
@@ -41,6 +44,8 @@ public class Login  extends JFrame{
 		JButton accept = new JButton("Entrar");
 		JButton delete = new JButton("Borrar");
 		JButton register = new JButton("¿Eres nuevo?");
+		JButton users = new JButton("Usuarios Actuales");
+
 		//
 		panel.setLayout(null);
 		panel.setBackground(color);
@@ -55,12 +60,14 @@ public class Login  extends JFrame{
 		icon.setBounds(193, 40, 54, 64);
 		register.setBounds(160, 330, 140, 40);
 		admin.setBounds(365, 340, 100, 50);
-		
+		users.setBounds(-20, 325, 180, 80);
+
 		icon.setBackground(color);
 		title1.setFont(cf.MyFont(1, 24));
 		title1.setForeground(Color.BLACK);
 		title2.setFont(cf.MyFont(1, 24));
 		title2.setForeground(Color.BLACK);
+
 		register.setBorderPainted(false);
 		register.setBackground(color);
 		admin.setBorderPainted(false);
@@ -73,6 +80,9 @@ public class Login  extends JFrame{
 		usr.setForeground(Color.BLACK);
 		password.setForeground(Color.BLACK);
 		register.setForeground(Color.BLACK);
+		users.setBackground(color);
+		users.setForeground(Color.BLACK);
+		users.setBorderPainted(false);
 		//
 		this.add(panel);
 		panel.add(usr);
@@ -86,46 +96,54 @@ public class Login  extends JFrame{
 		panel.add(icon);
 		panel.add(title2);
 		panel.add(admin);
+		panel.add(users);
+
 		//
 		admin.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				new VentanaAdmin();
 				dispose();
 			}
 		});
 		delete.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				passwordTxt.setText(null);
 				usrTxt.setText(null);
-				
+
 			}
 		});
 		register.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				new Registro();
 				dispose();
 			}
 		});
 		accept.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//if(usrTxt.getText()== usuarios)
-				
+				if (usrTxt.getText() != null && passwordTxt != null) {
+					for (Usuario usuario : ExtraccionBD.usuarios) {
+						if (usrTxt.getText().equals(usuario.getNombre())) {
+							new MenuPrincipal();
+							dispose();
+						}
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Intoduzca datos.");
+				}
 			}
 		});
 		//
 		this.setVisible(true);
 	}
-	public static void main(String[] args) {
-		new Login();
-	}
+
 }

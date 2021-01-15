@@ -8,8 +8,8 @@ public class Usuario {
 	public String nombre;
 	public String contraseña;
 	public int codigo;
-	public ArrayList<String> equiposFavoritos ; // Array de equipos, no de strings
-	public ArrayList<String> competicionesFavoritas ;
+	public ArrayList<Equipo> equiposFavoritos = new ArrayList<Equipo>(); 
+	public ArrayList<Competicion> competicionesFavoritas =  new ArrayList<Competicion>(); ;
 	
 	public Usuario(String nom, String contr, int cod) {
 		this.nombre = nom;
@@ -29,16 +29,16 @@ public class Usuario {
 	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
 	}
-	public ArrayList<String> getEquiposFavoritos() {
+	public ArrayList<Equipo> getEquiposFavoritos() {
 		return equiposFavoritos;
 	}
-	public void setEquiposFavoritos(ArrayList<String> equiposFavoritos) {
+	public void setEquiposFavoritos(ArrayList<Equipo> equiposFavoritos) {
 		this.equiposFavoritos = equiposFavoritos;
 	}
-	public ArrayList<String> getCompeticionesFavoritas() {
+	public ArrayList<Competicion> getCompeticionesFavoritas() {
 		return competicionesFavoritas;
 	}
-	public void setCompeticionesFavoritas(ArrayList<String> competicionesFavoritas) {
+	public void setCompeticionesFavoritas(ArrayList<Competicion> competicionesFavoritas) {
 		this.competicionesFavoritas = competicionesFavoritas;
 	} 
 	public int getCodigo() {
