@@ -561,6 +561,38 @@ public class ExtraccionBD {
 		}
 		return noms;
 	}
+	public static ArrayList<String> getNomCompeticionesPorAnyo(int anyo){
+		Conexion conexion1 = new Conexion();
+		Connection cn1 = null;
+		ArrayList<String> noms = new ArrayList<String>();
+		try {
+
+			cn1 = conexion1.conectar();
+			Statement stmt = cn1.createStatement();
+			ResultSet rs1 = stmt.executeQuery("SELECT nombre FROM competicion WHERE año = "+anyo+";");
+			while (rs1.next()) {
+				noms.add(rs1.getString("nombre"));
+			}
+			rs1.close();
+			stmt.close();
+			
+								
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
+		} finally {
+			try {
+				if (cn1 != null) {
+					cn1.close();
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return noms;
+	}
 	public static ArrayList<Integer> getCodCompeticiones(){
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;

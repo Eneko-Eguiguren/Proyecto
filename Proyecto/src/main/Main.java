@@ -14,8 +14,8 @@ public class Main {
 	
 	public static void main(String[] args) {
 		//ExtraccionBD.preparaDatos();
-	//	new Login();
-		System.out.println(ExtraccionBD.getAnyoCompeticion("Serie A"));
+		new Login();
+
 	//	new MenuPrincipal();
 	//	System.out.println(ExtraccionBD.getNomCompeticiones());
 ////		ExtraccionBD.usuarioFavs(ExtraccionBD.usuarios.get(1));

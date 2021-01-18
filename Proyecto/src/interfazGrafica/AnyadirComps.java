@@ -133,6 +133,7 @@ public class AnyadirComps extends JFrame {
 
 			}
 		});
+		
 		this.setVisible(true);
 	}
 

@@ -133,7 +133,7 @@ public class Login extends JFrame {
 				String contr = String.valueOf(passwordTxt.getPassword());
 				if (!(usrTxt.getText().isEmpty()) &&  !(contr.isEmpty())) {
 					if(contr.equals(ExtraccionBD.getContrUsuariosPorNom(usrTxt.getText()))) {
-						new MenuPrincipal();
+						new MenuPrincipal(usrTxt.getText());
 						dispose();
 						System.out.println("contraseña OK");
 					}else {
