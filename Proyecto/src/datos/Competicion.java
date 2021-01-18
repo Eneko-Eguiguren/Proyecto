@@ -29,8 +29,8 @@ public class Competicion {
 		this.nombre = nombre;
 	}
 
-	public Competicion (ArrayList<Equipo> equipos, String nombre, int cod_comp, int anyo,String pais, Equipo camp, Equipo subcamp) {
-		this.equipos = equipos;
+	public Competicion ( String nombre, int cod_comp, int anyo,String pais, Equipo camp, Equipo subcamp) {
+		
 		this.nombre = nombre;
 		this.codigo = cod_comp;
 		this.anyo = anyo;

@@ -6,6 +6,7 @@ import BD.ExtraccionBD;
 import datos.Equipo;
 import datos.Usuario;
 import interfazGrafica.Login;
+import interfazGrafica.MenuPrincipal;
 import interfazGrafica.UsuariosActuales;
 
 public class Main {
@@ -13,7 +14,9 @@ public class Main {
 	
 	public static void main(String[] args) {
 		//ExtraccionBD.preparaDatos();
-		new Login();
+	//	new Login();
+		System.out.println(ExtraccionBD.getAnyoCompeticion("Serie A"));
+	//	new MenuPrincipal();
 	//	System.out.println(ExtraccionBD.getNomCompeticiones());
 ////		ExtraccionBD.usuarioFavs(ExtraccionBD.usuarios.get(1));
 ////		System.out.println(ExtraccionBD.usuarios.get(1).getCompeticionesFavoritas());

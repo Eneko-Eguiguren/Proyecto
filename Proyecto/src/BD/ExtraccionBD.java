@@ -194,8 +194,7 @@ public class ExtraccionBD {
 
 	
 
-	public static void addCompeticionBD(ArrayList<Equipo> eqs, String n, int cod, int anyo, String pais, Equipo c,
-			Equipo sc) {
+	public static void addCompeticionBD(String n, int cod, int anyo, String pais,String c,String sc) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
 		Statement stm1 = null;
@@ -204,10 +203,8 @@ public class ExtraccionBD {
 		try {
 			cn1 = conexion1.conectar();
 			stm1 = cn1.createStatement();
-			stm1.executeUpdate("INSERT INTO COMPETICION VALUES(" + cod + ",'" + n + "','" + pais + "'," + anyo + ",')"
-					+ c.getNombre() + "','" + sc.getNombre() + "'");
-			Competicion comp = new Competicion(eqs, n, cod, anyo, pais, c, sc);
-			competiciones.add(comp);
+			stm1.executeUpdate("INSERT INTO COMPETICION VALUES(" + cod + ",'" + n + "','" + pais + "'," + anyo + ",'"+ c + "','" + sc + "');");
+
 			logger.log(Level.INFO, "Competicion añadida a BD correctamente.");
 
 		} catch (SQLException e) {
@@ -429,6 +426,40 @@ public class ExtraccionBD {
 		}
 		return noms;
 	}
+	public static ArrayList<Equipo> getEquipos(){
+		Conexion conexion1 = new Conexion();
+		Connection cn1 = null;
+		ArrayList<Equipo> eqs = new ArrayList<Equipo>();
+		try {
+
+			cn1 = conexion1.conectar();
+			Statement stmt = cn1.createStatement();
+			ResultSet rs1 = stmt.executeQuery("SELECT * FROM equipo;");
+			while (rs1.next()) {
+				int cod_equipo = rs1.getInt("codigo");
+				String nom_equipo = rs1.getString("nombre");
+				eqs.add(new Equipo(cod_equipo, nom_equipo));
+			}
+			rs1.close();
+			stmt.close();
+			
+								
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
+		} finally {
+			try {
+				if (cn1 != null) {
+					cn1.close();
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return eqs;
+	}
 	public static ArrayList<Integer> getCodEquipos(){
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -461,6 +492,42 @@ public class ExtraccionBD {
 		}
 		return cods;
 	}
+	public static Equipo getEquipoPorNombre(String nombreEquipo) {
+		
+			Conexion conexion1 = new Conexion();
+			Connection cn1 = null;
+			Equipo eq = null ;
+			try {
+
+				cn1 = conexion1.conectar();
+				Statement stmt = cn1.createStatement();
+				ResultSet rs1 = stmt.executeQuery("SELECT * FROM equipo WHERE nombre = '"+nombreEquipo+"';");
+				while (rs1.next()) {
+					int cod_equipo = rs1.getInt("codigo");
+					String nom_equipo = rs1.getString("nombre");
+					eq = new Equipo(cod_equipo, nom_equipo);
+				}
+				rs1.close();
+				stmt.close();
+				
+									
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+				logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
+			} finally {
+				try {
+					if (cn1 != null) {
+						cn1.close();
+					}
+					
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+			return eq;
+		}
+	
 	//COMPETICIONES
 	public static ArrayList<String> getNomCompeticiones(){
 		Conexion conexion1 = new Conexion();
@@ -525,6 +592,38 @@ public class ExtraccionBD {
 			}
 		}
 		return cods;
+	}
+	public static ArrayList<Integer> getAnyoCompeticion(String nomComp){
+		Conexion conexion1 = new Conexion();
+		Connection cn1 = null;
+		ArrayList<Integer> anyos = new ArrayList<Integer>();
+		try {
+
+			cn1 = conexion1.conectar();
+			Statement stmt = cn1.createStatement();
+			ResultSet rs1 = stmt.executeQuery("SELECT año FROM competicion WHERE nombre = '"+ nomComp+"';");
+			while (rs1.next()) {
+				anyos.add(rs1.getInt("año"));
+			}
+			rs1.close();
+			stmt.close();
+			
+								
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
+		} finally {
+			try {
+				if (cn1 != null) {
+					cn1.close();
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return anyos;
 	}
 	public static void actualizarUsuarioEquipoBD() {
 		Conexion conexion1 = new Conexion();

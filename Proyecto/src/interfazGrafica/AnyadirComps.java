@@ -19,7 +19,7 @@ public class AnyadirComps extends JFrame {
 
 	public AnyadirComps() {
 		this.setTitle("Añadir Equipos Nuevos");
-		this.setBounds(440, 160, 600, 560);
+		this.setBounds(440, 160, 500, 560);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
 		//
@@ -30,6 +30,7 @@ public class AnyadirComps extends JFrame {
 		JTextField anyoTxt = new JTextField();
 		JComboBox<String> campeonCombo = new JComboBox<String>();
 		JComboBox<String> subcampeonCombo = new JComboBox<String>();
+		JComboBox<Integer> anyoCombo= new JComboBox<Integer>();
 		JLabel title = new JLabel("AÑADIR COMPETICIONES");
 		JLabel nombre = new JLabel("Nombre");
 		JLabel codigo = new JLabel("Codigo");
@@ -45,6 +46,9 @@ public class AnyadirComps extends JFrame {
 			campeonCombo.addItem(eq);
 			subcampeonCombo.addItem(eq);
 		}
+		for (int i = 2020; i > 1950; i--) {
+			anyoCombo.addItem(i);
+		}
 		panel.setBackground(Login.color);
 		panel.setLayout(null);
 		nombre.setBounds(70, 100, 70, 25);
@@ -54,14 +58,14 @@ public class AnyadirComps extends JFrame {
 		pais.setBounds(70, 200, 100, 25);
 		paisTxt.setBounds(200, 200, 160, 35);
 		anyo.setBounds(70, 250, 100, 25);
-		anyoTxt.setBounds(200, 250, 160, 35);
+		anyoCombo.setBounds(200, 250, 160, 35);
 		campeon.setBounds(70, 300, 100, 25);
 		campeonCombo.setBounds(200, 300, 160, 35);
 		subcampeon.setBounds(70, 350, 100, 25);
 		subcampeonCombo.setBounds(200, 350, 160, 35);
 		accept.setBounds(115, 400, 100, 40);
 		delete.setBounds(240, 400, 100, 40);
-		title.setBounds(220, 20, 170, 100);
+		title.setBounds(180, 20, 170, 100);
 		atras.setBounds(180, 460, 100, 30);
 		//
 		this.add(panel);
@@ -81,18 +85,52 @@ public class AnyadirComps extends JFrame {
 		panel.add(paisTxt);
 		panel.add(campeonCombo);
 		panel.add(subcampeonCombo);
+		panel.add(anyoCombo);
 		//
 		accept.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int codigo = Integer.valueOf(codigoTxt.getText());
-				int anyo2 = Integer.valueOf(anyoTxt.getText());
-				if (ExtraccionBD.getNomCompeticiones().contains(nombreTxt.getText())|| ExtraccionBD.getCodCompeticiones().contains(codigo) || 1950 < anyo2 || anyo2 >2021) {
-					JOptionPane.showMessageDialog(null, "Datos no validos.");
-				}else {
-					System.out.println("nuevo ");
+
+				if ((ExtraccionBD.getNomCompeticiones().contains(nombreTxt.getText()) && ExtraccionBD.getAnyoCompeticion(nombreTxt.getText()).contains(anyoCombo.getSelectedItem()))) {
+					JOptionPane.showMessageDialog(null, "Esa competicion de ese año ya existe.");
 				}
+				else if(ExtraccionBD.getCodCompeticiones().contains(codigo)) {
+					JOptionPane.showMessageDialog(null, "El codigo ya existe.");
+				}
+				else if (nombreTxt.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Introduza el nombre.");
+				}
+				else if ( paisTxt.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Introduza el pais.");
+				}
+				else if (codigoTxt.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Introduza el codigo.");
+				}
+				
+				else {
+					ExtraccionBD.addCompeticionBD(nombreTxt.getText(), codigo,(Integer) anyoCombo.getSelectedItem(), paisTxt.getText(),(String)campeonCombo.getSelectedItem() ,(String)subcampeonCombo.getSelectedItem());
+				}
+			}
+		});
+		delete.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				codigoTxt.setText(null);
+				nombreTxt.setText(null);
+				paisTxt.setText(null);
+
+			}
+		});
+		atras.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new VentanaAdmin();
+				dispose();
+
 			}
 		});
 		this.setVisible(true);
