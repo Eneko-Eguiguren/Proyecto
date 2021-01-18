@@ -2,6 +2,8 @@ package datos;
 
 import java.util.ArrayList;
 
+import BD.ExtraccionBD;
+
 public class Usuario {
 	
 
@@ -15,6 +17,10 @@ public class Usuario {
 		this.nombre = nom;
 		this.contraseña = contr;
 		this.codigo = cod;
+	}
+	public void preparaArrays() {
+		this.setEquiposFavoritos(ExtraccionBD.mapaUsEq.get(this));
+		this.setCompeticionesFavoritas(ExtraccionBD.mapaUsComp.get(this));
 	}
 	
 	public String getNombre() {
@@ -41,6 +47,13 @@ public class Usuario {
 	public void setCompeticionesFavoritas(ArrayList<Competicion> competicionesFavoritas) {
 		this.competicionesFavoritas = competicionesFavoritas;
 	} 
+	public void anyadirCompeticionesFavoritas(Competicion comp) {
+		this.competicionesFavoritas.add(comp);
+	}
+	public void anyadirEquiposFavoritos(Equipo equipo) {
+		this.equiposFavoritos.add(equipo);
+	}
+	
 	public int getCodigo() {
 		return codigo;
 	}
@@ -51,7 +64,7 @@ public class Usuario {
 	public boolean equals(Object o) {
 		boolean igual = false;
 		if (o instanceof Usuario) {
-			if (this.nombre == ((Usuario) o).getNombre() && this.codigo== ((Usuario) o).getCodigo()) {
+			if (this.nombre.equals(((Usuario) o).getNombre()) && this.codigo== ((Usuario) o).getCodigo()) {
 				igual = true; 
 		}
 			}

@@ -130,16 +130,26 @@ public class Login extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (usrTxt.getText() != null && passwordTxt != null) {
-					for (Usuario usuario : ExtraccionBD.usuarios) {
-						if (usrTxt.getText().equals(usuario.getNombre())) {
-							new MenuPrincipal();
-							dispose();
-						}
+				String contr = String.valueOf(passwordTxt.getPassword());
+				if (!(usrTxt.getText().isEmpty()) &&  !(contr.isEmpty())) {
+					if(contr.equals(ExtraccionBD.getContrUsuariosPorNom(usrTxt.getText()))) {
+						new MenuPrincipal();
+						dispose();
+						System.out.println("contraseña OK");
+					}else {
+						JOptionPane.showMessageDialog(null, "Contraseña incorrecta.");
 					}
-				} else {
-					JOptionPane.showMessageDialog(null, "Intoduzca datos.");
+				}else {
+					JOptionPane.showMessageDialog(null, "Introduzca datos.");
 				}
+			}
+		});
+		users.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new UsuariosActuales();
+
 			}
 		});
 		//

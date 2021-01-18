@@ -34,15 +34,48 @@ public class ExtraccionBD {
 			logger.log(Level.SEVERE, "Error en creacion fichero log");
 		}
 	}
-	public static void preparaDatos() {
-		actualizarCompeticionesBD();
-		actualizarEquipoCompeticionBD();
-		actualizarEquiposBD();
-		actualizarJugadoresBD();
-		actualizarusuarioCompeticionBD();
-		actualizarUsuarioEquipoBD();
-		actualizarUsuariosBD();
+
+	public static void usuarioFavs(Usuario u) {
+		u.setCompeticionesFavoritas(ExtraccionBD.mapaUsComp.get(u));
+		u.setEquiposFavoritos(ExtraccionBD.mapaUsEq.get(u));
 	}
+
+	public static String getUsuarioPorCod1(int codigo) {
+		String u = "lul";
+		for (int i = 0; i < ExtraccionBD.usuarios.size(); i++) {
+
+			if (ExtraccionBD.usuarios.get(i).getCodigo() == codigo) {
+				u = ExtraccionBD.usuarios.get(i).getNombre();
+			} else {
+			}
+		}
+		return u;
+	}
+	public static Usuario getUsuarioPorCod2(int codigo) {
+		Usuario u = new Usuario("null", "null", 100);
+		for (int i = 0; i < ExtraccionBD.usuarios.size(); i++) {
+
+			if (ExtraccionBD.usuarios.get(i).getCodigo() == codigo) {
+				u = ExtraccionBD.usuarios.get(i);
+			} else {
+			}
+		}
+		return u;
+	}
+	public static Equipo getEquipoPorCod(int codigo) {
+		Equipo e = new Equipo(0, "null");
+		for (int i = 0; i < ExtraccionBD.equipos.size(); i++) {
+
+			if (ExtraccionBD.equipos.get(i).getCodigo() == codigo) {
+				e = ExtraccionBD.equipos.get(i);
+			} else {
+			}
+		}
+		return e;
+	}
+
+	
+
 	public static void actualizarEquiposBD() {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -94,8 +127,6 @@ public class ExtraccionBD {
 			cn1 = conexion1.conectar();
 			stm1 = cn1.createStatement();
 			stm1.executeUpdate("INSERT INTO EQUIPO VALUES(" + cod + ",'" + nombre + "')");
-			Equipo eq = new Equipo(cod, nombre);
-			equipos.add(eq);
 			logger.log(Level.INFO, "Equipo añadido a BD correctamente.");
 
 		} catch (SQLException e) {
@@ -121,100 +152,21 @@ public class ExtraccionBD {
 		}
 	}
 
-	public static void addUsuarioBD(String nom, String contr, int cod) {
-		Conexion conexion1 = new Conexion();
-		Connection cn1 = null;
-		Statement stm1 = null;
-		ResultSet rs1 = null;
-		try {
-			cn1 = conexion1.conectar();
-			stm1 = cn1.createStatement();
-			stm1.executeUpdate("INSERT INTO USUARIO VALUES(" + cod + ",'" + nom + "','" + contr + "')");
-			Usuario usr = new Usuario(nom, contr, cod);
-			usuarios.add(usr);
-			logger.log(Level.INFO, "Usuario añadido a BD correctamente.");
+	
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
-		} finally {
-			try {
-				if (rs1 != null) {
-					rs1.close();
-				}
-				if (stm1 != null) {
-					stm1.close();
-				}
-				if (cn1 != null) {
-					cn1.close();
-				}
-				if (rs1 != null) {
-					rs1.close();
-				}
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-	}
-
-	public static void actualizarUsuariosBD() {
-		Conexion conexion1 = new Conexion();
-		Connection cn1 = null;
-		Statement stm1 = null;
-		ResultSet rs1 = null;
-		usuarios = new ArrayList<Usuario>();
-		try {
-
-			cn1 = conexion1.conectar();
-			stm1 = cn1.createStatement();
-			rs1 = stm1.executeQuery("SELECT * FROM usuario");
-
-			while (rs1.next()) {
-
-				int cod_usuario = rs1.getInt(1);
-				String nom_usuario = rs1.getString(2);
-				String clave = rs1.getString(3);
-				Usuario u = new Usuario(nom_usuario, clave, cod_usuario);
-				usuarios.add(u);
-				logger.log(Level.INFO, "Usuario sacado de BD correctamente.");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
-		} finally {
-			try {
-				if (rs1 != null) {
-					rs1.close();
-				}
-				if (stm1 != null) {
-					stm1.close();
-				}
-				if (cn1 != null) {
-					cn1.close();
-				}
-				if (rs1 != null) {
-					rs1.close();
-				}
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-
-	}
+	
 
 	public static void addJugadoresBD(String n, int codequipo, int num, int edad) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
 		Statement stm1 = null;
 		ResultSet rs1 = null;
-		jugadores = new ArrayList<Jugador>();
+		
 
 		try {
 			cn1 = conexion1.conectar();
 			stm1 = cn1.createStatement();
-			stm1.executeUpdate("INSERT INTO JUGADOR VALUES(" + num + ",'" + n + "'," + codequipo + "," + edad+")");
-			Jugador jug = new Jugador(n, codequipo, num, edad);
-			jugadores.add(jug);
+			stm1.executeUpdate("INSERT INTO JUGADOR VALUES(" + num + ",'" + n + "'," + codequipo + "," + edad + ")");
 			logger.log(Level.INFO, "Jugador añadido a BD correctamente.");
 
 		} catch (SQLException e) {
@@ -240,52 +192,7 @@ public class ExtraccionBD {
 		}
 	}
 
-	public static void actualizarJugadoresBD() {
-
-		Conexion conexion1 = new Conexion();
-		Connection cn1 = null;
-		Statement stm1 = null;
-		ResultSet rs1 = null;
-
-		try {
-
-			cn1 = conexion1.conectar();
-			stm1 = cn1.createStatement();
-			rs1 = stm1.executeQuery("SELECT * FROM jugador");
-
-			while (rs1.next()) {
-				int num_jug = rs1.getInt(1);
-				int cod_equipo = rs1.getInt(3);
-				String nombre = rs1.getString(2);
-				int edad = rs1.getInt(4);
-				Jugador jug = new Jugador(nombre, cod_equipo, num_jug, edad);
-				jugadores.add(jug);
-				logger.log(Level.INFO, "Jugador sacado de BD correctamente.");
-
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
-		} finally {
-			try {
-				if (rs1 != null) {
-					rs1.close();
-				}
-				if (stm1 != null) {
-					stm1.close();
-				}
-				if (cn1 != null) {
-					cn1.close();
-				}
-				if (rs1 != null) {
-					rs1.close();
-				}
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-
-	}
+	
 
 	public static void addCompeticionBD(ArrayList<Equipo> eqs, String n, int cod, int anyo, String pais, Equipo c,
 			Equipo sc) {
@@ -326,51 +233,19 @@ public class ExtraccionBD {
 		}
 	}
 
-	public static void actualizarCompeticionesBD() {
-
+	
+	// USUARIOS
+	public static void addUsuarioBD(String nom, String contr, int cod) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
 		Statement stm1 = null;
 		ResultSet rs1 = null;
-
 		try {
-
 			cn1 = conexion1.conectar();
 			stm1 = cn1.createStatement();
-			rs1 = stm1.executeQuery("SELECT * FROM competicion");
+			stm1.executeUpdate("INSERT INTO USUARIO VALUES(" + cod + ",'" + nom + "','" + contr + "')");
+			logger.log(Level.INFO, "Usuario añadido a BD correctamente.");
 
-			while (rs1.next()) {
-
-				int cod_comp = rs1.getInt(1);
-				String nombre = rs1.getString(2);
-				String pais = rs1.getString(3);
-				int anyo = rs1.getInt(4);
-				String campeon = rs1.getString(5);
-				String subcampeon = rs1.getString(6);
-				Equipo camp = null;
-				Equipo subcamp = null;
-				for (Equipo e : equipos) {
-					if (e.getNombre() == campeon) {
-						camp = e;
-					} else if (e.getNombre() == subcampeon) {
-						subcamp = e;
-					}
-				}
-				boolean existe = false;
-				for (Competicion comp : competiciones) {
-					if (comp.getCodigo() == cod_comp) {
-						existe = true;
-					}
-				}
-
-				if (camp != null && subcamp != null && existe == false) {
-					Competicion c = new Competicion(mapaEqComp.get(nombre), nombre, cod_comp, anyo, pais, camp,
-							subcamp);
-					competiciones.add(c);
-					logger.log(Level.INFO, "Competicion sacada de BD correctamente.");
-				}
-
-			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
@@ -392,16 +267,270 @@ public class ExtraccionBD {
 				e2.printStackTrace();
 			}
 		}
-
 	}
+	public static String getContrUsuariosPorNom(String nombre){
+		Conexion conexion1 = new Conexion();
+		Connection cn1 = null;
+		String contrasenya = "hola";
+		try {
 
+			cn1 = conexion1.conectar();
+			Statement stmt = cn1.createStatement();
+			ResultSet rs1 = stmt.executeQuery("SELECT contraseña FROM usuario WHERE nombre = '"+nombre+"';");
+			while (rs1.next()) {
+				contrasenya = rs1.getString("contraseña");
+			}
+			rs1.close();
+			stmt.close();
+			
+								
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
+		} finally {
+			try {
+				if (cn1 != null) {
+					cn1.close();
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return contrasenya;
+	}
+	public static ArrayList<String> getNomUsuarios(){
+		Conexion conexion1 = new Conexion();
+		Connection cn1 = null;
+		ArrayList<String> noms = new ArrayList<String>();
+		try {
+
+			cn1 = conexion1.conectar();
+			Statement stmt = cn1.createStatement();
+			ResultSet rs1 = stmt.executeQuery("SELECT nombre FROM usuario;");
+			while (rs1.next()) {
+				noms.add(rs1.getString("nombre"));
+			}
+			rs1.close();
+			stmt.close();
+			
+								
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
+		} finally {
+			try {
+				if (cn1 != null) {
+					cn1.close();
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return noms;
+	}
+	public static ArrayList<Integer> getCodUsuarios(){
+		Conexion conexion1 = new Conexion();
+		Connection cn1 = null;
+		ArrayList<Integer> cods = new ArrayList<Integer>();
+		try {
+
+			cn1 = conexion1.conectar();
+			Statement stmt = cn1.createStatement();
+			ResultSet rs1 = stmt.executeQuery("SELECT codigo FROM usuario;");
+			while (rs1.next()) {
+				cods.add(rs1.getInt("codigo"));
+			}
+			rs1.close();
+			stmt.close();
+			
+								
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
+		} finally {
+			try {
+				if (cn1 != null) {
+					cn1.close();
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cods;
+	}
+	public static ArrayList<Integer> getCodEquiposPorUsuarios(int codusuario){
+		Conexion conexion1 = new Conexion();
+		Connection cn1 = null;
+		ArrayList<Integer> cods = new ArrayList<Integer>();
+		try {
+
+			cn1 = conexion1.conectar();
+			Statement stmt = cn1.createStatement();
+			ResultSet rs1 = stmt.executeQuery("SELECT cod_equipo FROM usuarioequipo WHERE cod_usuario = "+ codusuario+";");
+			while (rs1.next()) {
+				cods.add(rs1.getInt("cod_equipo"));
+			}
+			rs1.close();
+			stmt.close();
+			
+								
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
+		} finally {
+			try {
+				if (cn1 != null) {
+					cn1.close();
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cods;
+	}	
+	// EQUIPOS
+	public static ArrayList<String> getNomEquipos(){
+		Conexion conexion1 = new Conexion();
+		Connection cn1 = null;
+		ArrayList<String> noms = new ArrayList<String>();
+		try {
+
+			cn1 = conexion1.conectar();
+			Statement stmt = cn1.createStatement();
+			ResultSet rs1 = stmt.executeQuery("SELECT nombre FROM equipo;");
+			while (rs1.next()) {
+				noms.add(rs1.getString("nombre"));
+			}
+			rs1.close();
+			stmt.close();
+			
+								
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
+		} finally {
+			try {
+				if (cn1 != null) {
+					cn1.close();
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return noms;
+	}
+	public static ArrayList<Integer> getCodEquipos(){
+		Conexion conexion1 = new Conexion();
+		Connection cn1 = null;
+		ArrayList<Integer> cods = new ArrayList<Integer>();
+		try {
+
+			cn1 = conexion1.conectar();
+			Statement stmt = cn1.createStatement();
+			ResultSet rs1 = stmt.executeQuery("SELECT codigo FROM equipo;");
+			while (rs1.next()) {
+				cods.add(rs1.getInt("codigo"));
+			}
+			rs1.close();
+			stmt.close();
+			
+								
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
+		} finally {
+			try {
+				if (cn1 != null) {
+					cn1.close();
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cods;
+	}
+	//COMPETICIONES
+	public static ArrayList<String> getNomCompeticiones(){
+		Conexion conexion1 = new Conexion();
+		Connection cn1 = null;
+		ArrayList<String> noms = new ArrayList<String>();
+		try {
+
+			cn1 = conexion1.conectar();
+			Statement stmt = cn1.createStatement();
+			ResultSet rs1 = stmt.executeQuery("SELECT nombre FROM competicion;");
+			while (rs1.next()) {
+				noms.add(rs1.getString("nombre"));
+			}
+			rs1.close();
+			stmt.close();
+			
+								
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
+		} finally {
+			try {
+				if (cn1 != null) {
+					cn1.close();
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return noms;
+	}
+	public static ArrayList<Integer> getCodCompeticiones(){
+		Conexion conexion1 = new Conexion();
+		Connection cn1 = null;
+		ArrayList<Integer> cods = new ArrayList<Integer>();
+		try {
+
+			cn1 = conexion1.conectar();
+			Statement stmt = cn1.createStatement();
+			ResultSet rs1 = stmt.executeQuery("SELECT codigo FROM competicion;");
+			while (rs1.next()) {
+				cods.add(rs1.getInt("codigo"));
+			}
+			rs1.close();
+			stmt.close();
+			
+								
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.log(Level.SEVERE, "No se ha podido establecer conexion a la BD.");
+		} finally {
+			try {
+				if (cn1 != null) {
+					cn1.close();
+				}
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cods;
+	}
 	public static void actualizarUsuarioEquipoBD() {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
 		Statement stm1 = null;
 		ResultSet rs1 = null;
-
-		ArrayList<Equipo> equiposU = new ArrayList<Equipo>();
 		try {
 
 			cn1 = conexion1.conectar();
@@ -411,24 +540,12 @@ public class ExtraccionBD {
 			while (rs1.next()) {
 				int cod_usuario = rs1.getInt(1);
 				int cod_equipo = rs1.getInt(2);
-				Usuario user = null;
-				Equipo team = null;
-
-				for (Usuario u : usuarios) {
-					if (u.getCodigo() == cod_usuario) {
-						user = u;
-					}
-				}
-				for (Equipo e : equipos) {
-					if (e.getCodigo() == cod_equipo) {
-						team = e;
-					}
-				}
-				if (user != null && team != null) {
-					equiposU.add(team);
-					mapaUsEq.put(user, equiposU);
-
-				}
+				String u = getUsuarioPorCod1(cod_usuario);
+				Usuario us = getUsuarioPorCod2(cod_usuario);
+				Equipo eq = getEquipoPorCod(cod_equipo);
+				ArrayList<Equipo> eqs;
+				System.out.println(us.getEquiposFavoritos());
+				//mapaUsEq.put(us, eqs);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -462,10 +579,10 @@ public class ExtraccionBD {
 		try {
 			cn1 = conexion1.conectar();
 			stm1 = cn1.createStatement();
-			stm1.executeUpdate("INSERT INTO USUARIOEQUIPO VALUES(" + u.getCodigo() + "," + eq.getCodigo()+")");
+			stm1.executeUpdate("INSERT INTO USUARIOEQUIPO VALUES(" + u.getCodigo() + "," + eq.getCodigo() + ")");
 			ArrayList<Equipo> eqs = mapaUsEq.get(u);
 			eqs.add(eq);
-			mapaUsEq.put(u, eqs);
+			//mapaUsEq.put(u, eqs);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -652,7 +769,7 @@ public class ExtraccionBD {
 		try {
 			cn1 = conexion1.conectar();
 			stm1 = cn1.createStatement();
-			stm1.executeQuery("INSERT INTO USUARIOEQUIPO VALUES(" + eq.getCodigo() + "," + c.getCodigo()+")");
+			stm1.executeQuery("INSERT INTO USUARIOEQUIPO VALUES(" + eq.getCodigo() + "," + c.getCodigo() + ")");
 
 			ArrayList<Equipo> eqs = mapaEqComp.get(c.getNombre());
 			eqs.add(eq);

@@ -22,7 +22,7 @@ public class AnyadirEqs extends JFrame {
 		this.setTitle("Añadir Equipos Nuevos");
 		this.setBounds(440, 160, 485, 430);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		
+
 		//
 		JPanel panel = new JPanel();
 		JTextField nombreTxt = new JTextField();
@@ -56,50 +56,34 @@ public class AnyadirEqs extends JFrame {
 		panel.add(atras);
 		//
 		accept.addActionListener(new ActionListener() {
-			
-			private Boolean esta;
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
-					String nom = nombreTxt.getText();
-					String c = codigoTxt.getText();
-					int cod = Integer.parseInt(c);
-					System.out.println(cod);
-					Equipo eqTemporal = new Equipo(cod, nom);
-					esta = false;
-					for (Equipo eq : ExtraccionBD.equipos) {
-						if(eq.equals(eqTemporal)) {
-						 esta = true;
-						}
-					}
-					if(esta == false) {
-						//ExtraccionBD.addEquiposBD(cod, nom);
-					}else if (nom==null || c==null ){
-						JOptionPane.showMessageDialog(null, "Introduzca datos.");
-					}
-				} catch (Exception e2) {
-					JOptionPane.showMessageDialog(null, "Datos no válidos.");
+				int codigo = Integer.valueOf(codigoTxt.getText());
+				if (ExtraccionBD.getNomEquipos().contains(nombreTxt.getText())|| ExtraccionBD.getCodEquipos().contains(codigo)) {
+					JOptionPane.showMessageDialog(null, "Codigo o nombre ya existen.");
+				} else {
+					ExtraccionBD.addEquiposBD(codigo, nombreTxt.getText());
+					JOptionPane.showMessageDialog(null, "Equipo añadido correctamente.");
 				}
-				
+
 			}
 		});
 		delete.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				codigoTxt.setText(null);
 				nombreTxt.setText(null);
-				
+
 			}
 		});
 		atras.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new VentanaAdmin();
 				dispose();
-				
+
 			}
 		});
 		//
