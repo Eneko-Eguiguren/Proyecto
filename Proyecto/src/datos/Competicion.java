@@ -6,20 +6,37 @@ import BD.ExtraccionBD;
 
 public class Competicion {
 	
-	public ArrayList<Equipo> equipos = new ArrayList<Equipo>();
 	public String nombre;
 	public int codigo;
 	public int anyo;
 	public String pais;
 	public Equipo ganador;
 	public Equipo subcampeon;
-	public ArrayList<Equipo> getEquipos() {
-		return equipos;
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+
+	public Equipo getGanador() {
+		return ganador;
+	}
+
+	public void setGanador(Equipo ganador) {
+		this.ganador = ganador;
+	}
+
+	public Equipo getSubcampeon() {
+		return subcampeon;
+	}
+
+	public void setSubcampeon(Equipo subcampeon) {
+		this.subcampeon = subcampeon;
 	}
 	
-	public void setEquipos(ArrayList<Equipo> equipos) {
-		this.equipos = equipos;
-	}
+
 
 	public String getNombre() {
 		return nombre;
