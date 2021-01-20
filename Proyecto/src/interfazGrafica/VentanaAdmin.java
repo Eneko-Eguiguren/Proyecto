@@ -24,9 +24,9 @@ public class VentanaAdmin extends JFrame{
 		//
 		JPanel panel1 = new JPanel();
 		JPanel panel2 = new JPanel();
-		JButton anyadirJugs = new JButton("Añadir Jugadores");
 		JButton anyadirComps = new JButton("Añadir Competiciones");
 		JButton anyadirEquipo = new JButton("Añadir Equipos");
+		JButton anyadirEqsAcomp = new JButton("Añadir equipos a competicion");
 		JButton atras = new JButton("Atras");
 		
 		//
@@ -34,7 +34,8 @@ public class VentanaAdmin extends JFrame{
 		panel2.setLayout(new GridLayout());
 		anyadirComps.setBackground(color);
 		anyadirEquipo.setBackground(color);
-		anyadirJugs.setBackground(color);
+		anyadirEqsAcomp.setBackground(color);
+
 		atras.setBackground(color);
 		
 		//
@@ -42,7 +43,7 @@ public class VentanaAdmin extends JFrame{
 		panel1.add(panel2, BorderLayout.CENTER);
 		panel2.add(anyadirComps);
 		panel2.add(anyadirEquipo);
-		panel2.add(anyadirJugs);
+		panel2.add(anyadirEqsAcomp);
 		panel1.add(atras, BorderLayout.SOUTH);
 		//
 		anyadirComps.addActionListener(new ActionListener() {
@@ -60,6 +61,14 @@ public class VentanaAdmin extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				new AnyadirEqs();
 				dispose();
+			}
+		});
+		anyadirEqsAcomp.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new AnyadirEqsAComp();
+				
 			}
 		});
 		atras.addActionListener(new ActionListener() {

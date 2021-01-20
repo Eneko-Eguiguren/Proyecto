@@ -93,7 +93,26 @@ public class MenuPrincipal extends JFrame {
 		JLabel campeonComp = new JLabel("Campeón :  ");
 		JLabel subcampeonComp = new JLabel("Subcampeón :  ");
 		JLabel banderaPais = new JLabel();
-
+		JButton borrar = new JButton(new ImageIcon("src/images/borrar.png"));
+		JPanel panelInfoEqs = new JPanel();
+		JLabel infoEq = new JLabel("Informacion de equipo :  ");
+		JLabel nomEq = new JLabel("");
+		JLabel titulosEq = new JLabel("");
+		JLabel competicionesEq = new JLabel("");
+		JPanel compsDisputadas = new JPanel();
+		JList<String> listEqs = new JList<String>();
+		listEqs.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+		listEqs.setCellRenderer(new MiCellRenderer2());
+		DefaultListModel<String> modelo2 = new DefaultListModel<String>();
+		JScrollPane scrollPane2 = new JScrollPane();
+		JPanel panelListaEqs = new JPanel();
+		scrollPane2.setViewportView(listEqs);
+		JList<String> listCompsDisputadas = new JList<String>();
+		listCompsDisputadas.setSelectionMode(DefaultListSelectionModel.SINGLE_SELECTION);
+		DefaultListModel<String> modelo3 = new DefaultListModel<String>();
+		JScrollPane scrollPane3 = new JScrollPane();
+		JButton enter2 = new JButton(new ImageIcon("src/images/flecha.png"));
+		scrollPane3.setViewportView(listCompsDisputadas);
 		informacionComp.setFont(new Font("arial", 1, 14));
 		todosLosEquipos.setFont(new Font("arial", 1, 14));
 		panelCentralInferior.setLayout(null);
@@ -110,8 +129,27 @@ public class MenuPrincipal extends JFrame {
 		campeonComp.setBounds(10, 100, 250, 20);
 		subcampeonComp.setBounds(285, 100, 250, 20);
 		banderaPais.setBounds(7, -25, 100, 100);
+		borrar.setBounds(700, 5, 35, 35);
+		panelListaEqs.setLayout(new BorderLayout());
+		panelListaEqs.setBounds(50, 50, 300, 300);
+		panelInfoEqs.setBounds(390, 50, 300, 300);
+		infoEq.setBounds(5, 0, 300, 20);
+		infoEq.setFont(f);
+		nomEq.setBounds(10, 50, 300, 20);
+		titulosEq.setBounds(12, 115, 150, 20);
+		competicionesEq.setBounds(12, 180, 230, 20);
+		compsDisputadas.setLayout(new BorderLayout());
+		compsDisputadas.setBounds(15, 200, 250, 100);
+		enter2.setBounds(170, 348, 180, 30);
+		enter2.setBackground(Color.WHITE);
+		compsDisputadas.setBackground(Color.BLACK);
+		panelInfoEqs.setBorder(BorderFactory.createLoweredBevelBorder());
+		panelInfoEqs.setBackground(Color.WHITE);
+		borrar.setBackground(Color.WHITE);
+		borrar.setBorderPainted(false);
 		panelCentralSuperior.setBackground(Color.WHITE);
 		panelCentralInferior.setBackground(Color.WHITE);
+		panelInfoEqs.setLayout(null);
 		// PANEL IZQUIERDA
 		JPanel panelLeft = new JPanel();
 		panelLeft.setPreferredSize(new Dimension(200, MAXIMIZED_VERT));
@@ -131,6 +169,7 @@ public class MenuPrincipal extends JFrame {
 		DefaultListModel<String> modelo = new DefaultListModel<String>();
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportView(list);
+
 		panelInferior.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panelLeft.setLayout(null);
 		anyoCombo.setBounds(0, 30, 150, 50);
@@ -145,6 +184,7 @@ public class MenuPrincipal extends JFrame {
 		enter.setBounds(10, 530, 180, 50);
 		enter.setBackground(Color.WHITE);
 		panelLeft.setBackground(color);
+		buscar2.setBackground(Color.WHITE);
 
 		// PANEL INFERIOR
 		JLabel uActual = new JLabel("Usuario actual :     " + usuarioActual);
@@ -155,9 +195,9 @@ public class MenuPrincipal extends JFrame {
 		mBar.add(space1);
 		mBar.add(allComps);
 		mBar.add(space);
-		mBar.add(addFavoritos);
-		mBar.add(space3);
 		mBar.add(misCompeticiones);
+		mBar.add(space3);
+		mBar.add(addFavoritos);
 		mBar.add(space5);
 		mBar.add(settings);
 		mBar.add(space2);
@@ -187,6 +227,17 @@ public class MenuPrincipal extends JFrame {
 		panelCentralSuperior.add(campeonComp);
 		panelCentralSuperior.add(subcampeonComp);
 		panelCentralSuperior.add(banderaPais);
+		panelCentralSuperior.add(borrar);
+		panelCentralInferior.add(panelListaEqs);
+		panelListaEqs.add(scrollPane2);
+		panelCentralInferior.add(panelInfoEqs);
+		panelCentralInferior.add(enter2);
+		panelInfoEqs.add(nomEq);
+		panelInfoEqs.add(infoEq);
+		panelInfoEqs.add(titulosEq);
+		panelInfoEqs.add(competicionesEq);
+		panelInfoEqs.add(compsDisputadas);
+		compsDisputadas.add(scrollPane3);
 		// ACTION LISTENERS
 		buscar2.addActionListener(new ActionListener() {
 
@@ -242,7 +293,7 @@ public class MenuPrincipal extends JFrame {
 				buscar.setBounds(3000, 3000, 0, 0);
 				buscar2.setBounds(150, 30, 50, 50);
 				panelListaComps.setBounds(10, 85, 180, 450);
-				enter.setBounds(10, 500, 180, 50);
+				enter.setBounds(10, 530, 180, 50);
 
 			}
 		});
@@ -264,30 +315,82 @@ public class MenuPrincipal extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (list.getSelectedValue() != null) {
-					anyoComp.setText("Año :  ");
-					nombreComp.setText("Nombre :  ");
-					paisComp.setText("Pais :  ");
-					banderaPais.setIcon(new ImageIcon("src/images/"));
-					campeonComp.setText("Campeón :  ");
-					subcampeonComp.setText("Subcampeón :  ");
+					modelo2.clear();
 					String compSeleccionada = list.getSelectedValue();
 					int anyo = (Integer) anyoCombo.getSelectedItem();
 					Competicion c = ExtraccionBD.getCompeticion(compSeleccionada, anyo);
-					System.out.println(c.getGanador().getNombre());
 					anyoComp.setText("Año :  " + c.getAnyo());
 					nombreComp.setText("Nombre :  " + compSeleccionada);
 					paisComp.setText("Pais :  " + c.getPais());
 					banderaPais.setIcon(new ImageIcon("src/images/" + c.getPais() + ".png"));
 					campeonComp.setText("Campeón :  " + c.getGanador().getNombre());
 					subcampeonComp.setText("Subcampeón :  " + c.getSubcampeon().getNombre());
+
+					ArrayList<Integer> codsEquipo = ExtraccionBD.getEquiposDeComp(compSeleccionada, anyo);
+					ArrayList<String> nomsEquipo = new ArrayList<String>();
+					for (int cod : codsEquipo) {
+						nomsEquipo.add(ExtraccionBD.getNomEquipoPorCod(cod));
+					}
+					if (!nomsEquipo.isEmpty()) {
+						for (String eq : nomsEquipo) {
+							modelo2.addElement(eq);
+							listEqs.setModel(modelo2);
+						}
+					}
+
 				}
 			}
 		});
-		this.setVisible(true);
-	}
+		enter2.addActionListener(new ActionListener() {
 
-	public static void setInfoComp(String nomComp, int anyo) {
-		String pais = ExtraccionBD.getPaisCompeticion(nomComp);
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (listEqs.getSelectedValue() != null) {
+					modelo3.clear();
+					String eqSeleccionado = listEqs.getSelectedValue();
+					int anyo = (Integer) anyoCombo.getSelectedItem();
+					nomEq.setText(" Nombre :  "+eqSeleccionado);
+					titulosEq.setText("Titulos ganados :  " + ExtraccionBD.getTitulosEquipo(eqSeleccionado));
+					competicionesEq.setText("Competiciones disputadas ese año :  ");
+					ArrayList<String> compsEnAnyo = ExtraccionBD.getCompeticionesDisputadasEnAnyo(eqSeleccionado, anyo);
+					if (!compsEnAnyo.isEmpty()) {
+						for (String cEnAnyo : compsEnAnyo) {
+							modelo3.addElement(cEnAnyo);
+							listCompsDisputadas.setModel(modelo3);
+						}
+					}
+
+				}
+			}
+
+		});
+		borrar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				anyoComp.setText("Año :  ");
+				nombreComp.setText("Nombre :  ");
+				paisComp.setText("Pais :  ");
+				banderaPais.setIcon(new ImageIcon("src/images/"));
+				campeonComp.setText("Campeón :  ");
+				subcampeonComp.setText("Subcampeón :  ");
+				modelo2.clear();
+				nomEq.setText("");
+				titulosEq.setText("");
+				competicionesEq.setText("");
+				modelo3.clear();
+
+			}
+		});
+		addCompetitions.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new AnyadirFavs(usuarioActual);
+				
+			}
+		});
+		this.setVisible(true);
 	}
 
 	public static void main(String[] args) {

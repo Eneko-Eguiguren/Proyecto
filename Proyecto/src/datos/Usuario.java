@@ -18,11 +18,7 @@ public class Usuario {
 		this.contraseña = contr;
 		this.codigo = cod;
 	}
-	public void preparaArrays() {
-		this.setEquiposFavoritos(ExtraccionBD.mapaUsEq.get(this));
-		this.setCompeticionesFavoritas(ExtraccionBD.mapaUsComp.get(this));
-	}
-	
+
 	public String getNombre() {
 		return nombre;
 	}

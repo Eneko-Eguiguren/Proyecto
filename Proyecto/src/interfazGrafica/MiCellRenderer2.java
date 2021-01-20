@@ -7,11 +7,11 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
-public class MiCellRenderer extends JLabel implements ListCellRenderer {
+public class MiCellRenderer2 extends JLabel implements ListCellRenderer {
 	
 	
 	private static final long serialVersionUID = 1L;
-	public  ImageIcon longIcon = new ImageIcon("src/images/copa.png") ;
+	public  ImageIcon longIcon = new ImageIcon("src/images/escudo.png") ;
 	
 	public Component getListCellRendererComponent(JList list, Object value, // value to display
 			int index, // cell index

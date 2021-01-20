@@ -81,7 +81,7 @@ public class Registro extends JFrame {
 				boolean esta = true;
 				for (String nom : ExtraccionBD.getNomUsuarios()) {
 					if (nom.equals(name.getText())) {
-
+						JOptionPane.showMessageDialog(null, "El usuario ya existe.");
 						esta = true;
 						break;
 					} else {
@@ -89,10 +89,13 @@ public class Registro extends JFrame {
 						esta = false;
 					}
 				}
-				if (esta == false) {
+				if (esta == false && !(name.getText().isEmpty()) &&  (password.getPassword().length!=0)) {
 					ExtraccionBD.addUsuarioBD(name.getText(), String.valueOf(password.getPassword()),ExtraccionBD.getNomUsuarios().size() + 1);
 					JOptionPane.showMessageDialog(null, "Usuario creado correctamente.");	
 					dispose();
+					new Login();
+				}else {
+					JOptionPane.showMessageDialog(null, "Introduce datos.");
 				}
 			}
 		});
