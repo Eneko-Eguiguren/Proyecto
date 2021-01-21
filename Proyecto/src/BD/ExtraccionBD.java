@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 
 import datos.Competicion;
 import datos.Equipo;
-import datos.Jugador;
 import datos.Usuario;
 
 public class ExtraccionBD {
@@ -30,7 +29,7 @@ public class ExtraccionBD {
 
 
 	
-
+	//Añadimos jugadores de la base de datos con sus correspondientes datos
 	public static void addJugadoresBD(String n, int codequipo, int num, int edad) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -65,7 +64,7 @@ public class ExtraccionBD {
 			}
 		}
 	}
-
+	//Añadimos competiciones de la base de datos con sus correspondientes datos
 	public static void addCompeticionBD(String n, int cod, int anyo, String pais, String c, String sc) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -103,7 +102,7 @@ public class ExtraccionBD {
 		}
 	}
 
-	// USUARIOS
+	//Añadimos usuarios de la base de datos con sus correspondientes datos
 	public static void addUsuarioBD(String nom, String contr, int cod) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -137,7 +136,7 @@ public class ExtraccionBD {
 			}
 		}
 	}
-
+	//Obtienes la contraseña en funcion del nombre del usuario
 	public static String getContrUsuariosPorNom(String nombre) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -168,7 +167,7 @@ public class ExtraccionBD {
 		}
 		return contrasenya;
 	}
-
+	//Obtienes el usuario en funcion de su nombre
 	public static Integer getCodUsuariosPorNom(String nombre) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -200,6 +199,7 @@ public class ExtraccionBD {
 		return codigo;
 	}
 
+	//Obtiene el nombre con el que se identifica al usuari@
 	public static ArrayList<String> getNomUsuarios() {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -230,7 +230,8 @@ public class ExtraccionBD {
 		}
 		return noms;
 	}
-
+	
+	//Obtiene el codigo con el que se identifica al usuari@
 	public static ArrayList<Integer> getCodUsuarios() {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -261,7 +262,8 @@ public class ExtraccionBD {
 		}
 		return cods;
 	}
-
+	
+	// Relacionas a un usuario por su codigo con un equipo por su codigo
 	public static ArrayList<Integer> getCodEquiposPorCodUsuario(int codusuario) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -294,6 +296,7 @@ public class ExtraccionBD {
 		return cods;
 	}
 
+	// Relacionas a un usuario por su codigo con una competicion por su nombre
 	public static ArrayList<String> getNomCompsPorCodUsuario(int codusuario) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -327,7 +330,7 @@ public class ExtraccionBD {
 		return noms;
 	}
 	
-	// EQUIPOS
+	//Añadimos equipos de la base de datos con sus correspondientes datos
 	public static void addEquiposBD(int cod, String nombre) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -361,6 +364,8 @@ public class ExtraccionBD {
 			}
 		}
 	}
+	
+	//Obtiene el nombre de los equipos
 	public static ArrayList<String> getNomEquipos() {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -392,6 +397,7 @@ public class ExtraccionBD {
 		return noms;
 	}
 	
+	//Obtiene los equipos
 	public static ArrayList<Equipo> getEquipos() {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -425,6 +431,7 @@ public class ExtraccionBD {
 		return eqs;
 	}
 
+	//Obtienes el equipo en funcion de su codigo
 	public static ArrayList<Integer> getCodEquipos() {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -456,6 +463,7 @@ public class ExtraccionBD {
 		return cods;
 	}
 
+	//Obtienes el equipo en funcion de su nombre
 	public static Equipo getEquipoPorNombre(String nombreEquipo) {
 
 		Conexion conexion1 = new Conexion();
@@ -489,6 +497,8 @@ public class ExtraccionBD {
 		}
 		return eq;
 	}
+	
+	//Relaciona nombre de un equipo a un codigo concreto
 	public static String getNomEquipoPorCod(Integer codEquipo) {
 
 		Conexion conexion1 = new Conexion();
@@ -521,6 +531,7 @@ public class ExtraccionBD {
 		return name;
 	}
 
+	//Obtienes los equipos de una competicion
 	public static ArrayList<Integer> getEquiposDeComp(String nombreCompeticion, int anyo) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -551,6 +562,8 @@ public class ExtraccionBD {
 		}
 		return cods;
 	}
+	
+	//Obtienes los titulos que tenga cierto equipo
 	public static Integer getTitulosEquipo(String nomEquipo) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -581,6 +594,8 @@ public class ExtraccionBD {
 		}
 		return titulos;
 	}
+	
+	//Obtienes cuantas competiciones ha disputado un equipo en un año concreto
 	public static ArrayList<String> getCompeticionesDisputadasEnAnyo(String nomEq, int anyo) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -612,7 +627,7 @@ public class ExtraccionBD {
 		return comps;
 	}
 
-	// COMPETICIONES
+	// Obtiene las competiciones
 	public static Competicion getCompeticion(String nom, int anyo) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -649,6 +664,8 @@ public class ExtraccionBD {
 		}
 		return c;
 	}
+	
+	//Obtiene el nombre con el que se identifica la competicion
 	public static ArrayList<String> getNomCompeticiones() {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -679,6 +696,8 @@ public class ExtraccionBD {
 		}
 		return noms;
 	}
+	
+	//Obtiene el nombre de las competiciones sin que se repitan
 	public static ArrayList<String> getNomCompeticionesSinRepetir() {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -709,6 +728,8 @@ public class ExtraccionBD {
 		}
 		return noms;
 	}
+	
+	//Obtiene el nombre de la competicion en el año seleccionado
 	public static ArrayList<String> getNomCompeticionesPorAnyo(int anyo) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -771,6 +792,7 @@ public class ExtraccionBD {
 		return noms;
 	}
 
+	//Obtiene el codigo con el que se identifica la competicion
 	public static ArrayList<Integer> getCodCompeticiones() {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -801,6 +823,8 @@ public class ExtraccionBD {
 		}
 		return cods;
 	}
+	
+	//Se pregunta si la competicion esta entra las favoritas del usuario
 	public static boolean isCompInFavs(String u,Competicion c) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -838,6 +862,8 @@ public class ExtraccionBD {
 		}
 		return esta;
 	}
+	
+	//Obtiene el año en el que se disputo la competicion
 	public static ArrayList<Integer> getAnyoCompeticion(String nomComp) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -868,6 +894,8 @@ public class ExtraccionBD {
 		}
 		return anyos;
 	}
+	
+	//Obtiene el pais en el que se disputo la competicion
 	public static String getPaisCompeticion(String nomComp) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -899,6 +927,7 @@ public class ExtraccionBD {
 		return pais;
 	}
 
+	//Añade un usuario a un equipo
 	public static void addUsuarioEquipoBD(Usuario u, Equipo eq) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -933,6 +962,7 @@ public class ExtraccionBD {
 		}
 	}
 
+	//Añade un usuario a una competicion
 	public static void addUsuarioCompeticionBD(String u, String c, int anyo) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;
@@ -967,6 +997,7 @@ public class ExtraccionBD {
 		}
 	}
 
+	//Añade un equipo a una competicion 
 	public static void addEquipoCompeticionBD(String eq, String c, int anyo) {
 		Conexion conexion1 = new Conexion();
 		Connection cn1 = null;

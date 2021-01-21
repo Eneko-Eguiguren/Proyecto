@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-01-21T10:42:23</date>
+  <millis>1611222143403</millis>
+  <sequence>0</sequence>
+  <logger>BD.ExtraccionBD</logger>
+  <level>INFO</level>
+  <class>BD.ExtraccionBD</class>
+  <method>addCompeticionBD</method>
+  <thread>16</thread>
+  <message>Competicion añadida a BD correctamente.</message>
+</record>
+</log>

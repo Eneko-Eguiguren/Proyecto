@@ -3,16 +3,24 @@ package datos;
 import java.util.ArrayList;
 
 public class Equipo {
-	public int codigo;
-	public String nombre;
-	public ArrayList<Jugador> jugsDeEquipo;
+	public int codigo;  //codigo del equipo
+	public String nombre;  //codigo del nombre del equipo
+//jugadores del equipo
 	
+	/**
+	 * Construye un equipo con los datos indicados.
+	 * @param code codigo del equipo
+	 * @param name nombre del equipo
+	 */
 	public Equipo(int code, String name) {
 		this.codigo = code;
 		this.nombre = name;
 
 	}
-
+	/**
+	 * Obtiene el codigo del equipo
+	 * @return el codigo del equipo
+	 */
 	public int getCodigo() {
 		return codigo;
 	}
@@ -20,7 +28,10 @@ public class Equipo {
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-
+	/**
+	 * Obtiene el nombre del equipo
+	 * @return el nombre del equipo
+	 */
 	public String getNombre() {
 		return nombre;
 	}
@@ -29,13 +40,6 @@ public class Equipo {
 		this.nombre = nombre;
 	}
 
-	public ArrayList<Jugador> getJugsDeEquipo() {
-		return jugsDeEquipo;
-	}
-
-	public void setJugsDeEquipo(ArrayList<Jugador> jugsDeEquipo) {
-		this.jugsDeEquipo = jugsDeEquipo;
-	}
 	public boolean equals(Object o) {
 		boolean igual = false;
 		if (o instanceof Equipo) {
